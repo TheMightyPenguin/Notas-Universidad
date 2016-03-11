@@ -1,0 +1,132 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage[document]{ragged2e}
+\usepackage{multicol}
+	\usepackage{booktabs}
+ % % % % % % % %
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+\usepackage{anysize}
+\marginsize{2.54cm}{2.54cm}{2.54cm}{2.54cm}
+
+\usepackage{setspace}
+%\onehalfspacing
+\doublespacing
+
+\setlength{\columnsep}{1cm}
+
+%En caso de que LaTeX separe las palabras con - de manera incorrecta, usar
+%\hyphenation{deci-sión,e-xa-men, otras palabras....}
+
+% %PORTADA
+\begin{document}
+
+\centerline{Universidad de Carabobo}
+\centerline{Facultad de Ciencia y Tecnologia}
+\centerline{Sistemas Operativos}
+
+\vspace{8cm}
+\begin{centering}
+\hrule 	\vspace{0.4cm}
+	{ \Huge \bfseries Interrupciones \\[0.4cm] }
+\hrule \vfill
+\end{centering}
+
+\vfill
+\centerline{Victor Tortolero}
+\centerline{24.569.609}
+
+
+
+\centerline{\today}
+
+\newpage
+% %Fin Portada
+
+
+\flushleft
+\setlength{\parindent}{20pt}
+
+%%CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\justify
+	\begin{centering} \section{Las Interrupciones} \end{centering}
+	Una interrupción es una señal que recibe el procesador, ante la cual debe detener cualquier proceso que este realizando y darle prioridad al proceso o tarea que debe realizar según la interrupción que haya ocurrido. Las interrupciones también puede decirse que son un evento, que es accionado por una señal de hardware o software. 
+	Prácticamente todos los computadores disponen de un mecanismo mediante el que otros módulos (E/S, memoria, etc..) pueden interrumpir el procesamiento normal de la CPU.
+	Las interrupciones de hardware son usadas para indicar al sistema operativo que cierto dispositivo requiere atención.
+	Las interrupciones pueden ser síncronas o asíncronas.
+
+	Las síncronas son aquellas provocadas por la ejecución de una instrucción de programa en el CPU, pueden ser las Interrupciones del programa (excepciones) o las llamadas al sistema.
+	
+	Las asíncronas son provocadas por eventos externos al programa que se ejecuta y su objetivo es notificar al sistema operativo algún cambio en el ambiente de operatividad del sistema, permitiéndose la interacción del operador de la maquina para que pueda tomar decisiones e informar acciones que no pueden ser tomadas automáticamente por el sistema operativo.
+	Aquí entran las instrucciones por Fallo de Hardware, interrupciones por Entrada/Salida y interrupciones por Temporización.
+	
+	Al surgir una interrupción el sistema guarda el contador de programa y los registros e indicadores en un area reservada de memoria, para retornar a este estado en lo que termine de manejar le excepción. También debe existir una prioridad en el orden de atención de las Interrupciones, y esto es manejado por el sistema operativo. Si el sistema operativo se encuentra actualmente tomando las acciones para una interrupción, y surge otra solo se pasara directamente a la nueva interrupción si esta tiene un nivel de prioridad mayor. En caso de que el nivel de prioridad sea menor, los mecanismos enmascaramiento se hace cargo de bloquear la interrupcion. El sistema de prioridad usa los mecanismos de enmascaramiento.
+	
+	\vspace{0.2cm}
+	\begin{centering} \section{Clases de Interrupciones} \end{centering}
+	\begin{itemize}
+		\item \textbf{Programa}: Generadas por alguna condición que se produce como resultado de la ejecución de una instrucción, tal como desbordamiento aritmético (overflow), división por cero, intento de ejecutar una instrucción máquina inexistente o intento de acceder fuera del espacio de memoria permitido para el usuario.
+		Si el programa no especifica como manejar la interrupción, el sistema operativo finaliza el programa.
+		
+		\item \textbf{Temporización}: Son generadas por un temporizador interno al procesador. Esto permite al sistema operativo realizar ciertas funciones de manera regular.
+		
+		\item \textbf{E/S}: Generadas por un controlador de E/S, para indicar la finalización sin problemas de una operación o para avisar de ciertas condiciones de error. El dispositivo de E/S normalmente enciende un bit y el procesador al notarlo realiza las acciones necesarias.
+		
+		\item \textbf{Fallo de Hardware}: Generadas por un fallo tal como la falta de potencia de alimentación o un error de paridad de memoria.
+		
+		\item \textbf{Llamadas al sistema}: Son mecanismos que permiten usar servicios que ofrece el sistema operativo, son la interfaz entre el sistema operativo y el programa.
+		Al realizar una llamada al sistema, la CPU transfiere el control a un código privilegiado que realiza la acción, y luego retorna control al programa que realizo la llamada.
+		Algunos de los servicios que ofrecen son:
+		\begin{itemize}
+			\item Manipulación de archivos.
+			\item Obtener o manipular la hora.
+			\item Establecer o crear una conexión mediante algún protocolo.
+			\item Control de procesos.
+			\item Asignar y liberar memoria.
+		\end{itemize}
+	\end{itemize}
+	
+	
+	
+	\begin{table}[]
+		\centering
+		\caption{My caption}
+		\label{my-label}
+		\begin{tabular}{|c||L{3cm}|L{3cm}|L{3cm}|}
+			\hline
+			Tipo de Interrupción & \multicolumn{1}{c|}{Descripción}                                                    & \multicolumn{1}{c|}{Origen}                                                                                  & \multicolumn{1}{c|}{Tratamiento}                                                                                          \\ \hline \hline
+			Programa             & Indican un suceso que podria obligar al programa a cerrarse.                        & Overflow, división por cero, memoria.                                                                        & Normalmente el programa se cierra, pero si el programador lo especifica es posible recuperarse.                           \\ \hline
+			Temporizador         & Usada para realizar una accion cada cierto tiempo.                                  & Temporizador interno.                                                                                        & Se detiene el programa, y el SO se encarga de realizar la tarea.                                                          \\ \hline
+			E/S                  & Sirven para la comunicación entre los dispositivos externos y el Sistema Operativo. & Cuando algún dispositivo externo termina una operación.                                                      & Debe detenerse el programa en ejecución, atender la interrupción producida, y volver al programa que estaba ejecutandose. \\ \hline
+			Fallo de Hardware    & Al ocurrir una falla en uno de los componentes fisicos.                             & Falta de potencia en la alimentación, Sector de Disco dañado,                                                & Depende de que componente falle.                                                                                          \\ \hline
+			Llamadas al sistema  & Permiten la comunicación entre el programa y el Sistema Operativo.                  & Cuando el programa requiere una acción especial que solo el Sistema Operativo tiene privilegios de realizar. & El sistema operativo ejecuta las acciones necesarias y luego retorna el control al programa.                              \\ \hline
+		\end{tabular}
+	\end{table}
+
+%%FIN CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bibliografia
+\newpage
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

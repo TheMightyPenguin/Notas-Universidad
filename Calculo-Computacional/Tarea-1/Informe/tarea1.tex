@@ -1,0 +1,155 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage[document]{ragged2e}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{amsmath}
+ % % % % % % % %
+
+% Color para el fondo del codigo!
+\definecolor{light-gray}{rgb}{0.7421875, 0.7421875, 0.7421875}
+
+\lstdefinestyle{customc}{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=tlbr,
+	xleftmargin=0.7cm,
+	language=C,
+	showstringspaces=false,
+	basicstyle=\ttfamily\linespread{1.1}\footnotesize,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{yellow},
+}
+
+\lstset{
+escapechar=@,
+style=customc,
+backgroundcolor=\color{light-gray}
+}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%Custom commands
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily 24 Ceros}}}{00\dots00}}}
+
+\usepackage{anysize}
+\marginsize{2.54cm}{2.54cm}{2.54cm}{2.54cm}
+
+\usepackage{setspace}
+\onehalfspacing
+%\doublespacing
+
+\setlength{\columnsep}{1cm}
+
+%En caso de que LaTeX separe las palabras con - de manera incorrecta, usar
+%\hyphenation{deci-sión,e-xa-men, otras palabras....}
+
+\setlength{\columnseprule}{2pt}
+\def\columnseprulecolor{\color{black}}
+
+
+% Aqui comienza el documento como tal!!
+\begin{document}
+
+\flushleft
+\setlength{\parindent}{20pt}
+
+%%CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centerline{\huge Tarea 1 \textbf{Calculo Computacional}}
+\centerline{Victor Tortolero CI:24.569.609}  % Pon tu nombre y Cedula!
+\hrule
+	
+%% Respuesta 1 %%%%%%%%%%%%%%%%%%	
+\section*{Respuesta 1}
+$\frac{A + 3}{13}$, como $A = 9$, tendríamos $\frac{9 + 3}{13} = \frac{12}{13}$.
+Ahora procedemos a convertir a binario. \newline
+\begin{multicols}{2}
+	$\frac{12}{13} \times 2 = \frac{24}{13}$, $b_{0} = 1$ \newline
+	$\frac{11}{13} \times 2 = \frac{22}{13}$, $b_{1} = 1$ \newline
+	$\frac{9}{13} \times 2 = \frac{18}{13}$, $b_{2} = 1$ \newline
+	$\frac{5}{13} \times 2 = \frac{10}{13}$, $b_{3} = 0$ \newline
+	$\frac{10}{13} \times 2 = \frac{20}{13}$, $b_{4} = 1$ \newline
+	$\frac{7}{13} \times 2 = \frac{14}{13}$, $b_{5} = 1$ \newline
+	$\frac{1}{13} \times 2 = \frac{2}{13}$, $b_{6} = 0$ \newline
+	$\frac{2}{13} \times 2 = \frac{4}{13}$, $b_{7} = 0$ \newline
+	$\frac{4}{13} \times 2 = \frac{8}{13}$, $b_{8} = 0$ \newline
+	$\frac{8}{13} \times 2 = \frac{16}{13}$, $b_{9} = 1$ \newline
+	$\frac{3}{13} \times 2 = \frac{6}{13}$, $b_{10} = 0$ \newline
+	$\frac{6}{13} \times 2 = \frac{12}{13}$, $b_{11} = 0$ \newline
+\end{multicols}
+
+Por lo tanto tenemos que:
+\begin{equation*}
+	0.111011000100\overline{111011000100}\textbf{1}\dots
+\end{equation*}
+Observemos que el numero que vendria luego del bit 24 seria un 1. Entonces a la hora de redondear se suma 1.
+Por lo tanto, tenemos que $Fl(\frac{12}{13})_{Truncado} = 0.111011000100111011000100$, 
+y que $Fl(\frac{12}{13})_{Redondeado} = 0.111011000100111011000101$.
+\begin{align*} % aqui empieza la locura xD
+	\text{\textbf{Por Truncamiento tenemos que:}} \\
+	E_{A} = |x - Fl(x)_{Truncado}| & = 0, \underbrace{000\dots000}_\text{24 Ceros}111011000100\dots \\
+	& = 0,\underbrace{111011000100111011000100}_\text{Esto es $\frac{12}{13}$}\dots \times 2^{-24} \\
+	& = \frac{12}{13} \times 2^{-24} \approx 5,50196 \times 10^{-8} \\ \midrule
+	E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{12}{13} \times 2^{-24}}{\frac{12}{13}} \\
+	& = 2^{-24} \approx 5,96046 \times 10^{-8}
+\end{align*}
+
+\begin{align*}
+\text{\textbf{Por Redondeo tenemos que:}} \\
+E_{A} = |x - Fl(x)_{Redondeado}| & = |x - (Fl(x)_{Truncado} + 1 \times 2^{-24})| \\
+& = |x - Fl(x)_{Truncado} - 1 \times 2^{-24}| \\
+& = |\frac{12}{13} \times 2^{-24} - 1 \times 2^{-24}|  \\
+& = |\frac{12}{13} - 1| \times 2^{-24} \\
+& = \frac{1}{13} \times 2^{-24} \approx 4,584 \times 10^{-9} \\ \midrule
+E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{1}{13} \times 2^{-24}}{\frac{12}{13}} \\
+& = \frac{1}{12} \times 2^{-24} \approx 4,9670 \times 10^{-9}
+\end{align*}
+%% Fin respuesta 1 %%%%%%%%%%%%%%%%%%		
+
+
+%% Respuesta 2 %%%%%%%%%%%%%%%%%%%%%%
+\hrule
+\section*{Respuesta 2}
+
+%% Fin respuesta 2 %%%%%%%%%%%%%%%%%%
+
+
+%% Respuesta 3 %%%%%%%%%%%%%%%%%%%%%%
+\hrule
+\section*{Respuesta 3}
+
+%% Fin respuesta 3 %%%%%%%%%%%%%%%%%%	
+
+%%FIN CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Codigo Fuente
+\newpage
+\begin{centering}
+	\section*{Codigo Fuente}
+\end{centering}
+
+\section*{repuesta3.c}
+\lstinputlisting[language=C]{../Codigos/respuesta3.c}
+
+\newpage
+\section*{repuesta5.c}
+\lstinputlisting[language=C]{../Codigos/respuesta5.c}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
