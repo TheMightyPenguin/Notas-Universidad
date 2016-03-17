@@ -4,69 +4,88 @@
 float exponencialAdelante(float);
 float exponencialAtras(float);
 float fact(float);
+double exponencialAdelanteD(double);
+double exponencialAtrasD(double);
+double factD(double);
 
 int main(){
 	float x=10;
-	exponencialAdelante(x);
-	printf("--------------\n");
-	exponencialAtras(x);
+	printf("Precision Simple:\n");
+	printf("\tHacia adelante = %.24f\n", exponencialAdelante(x));
+	printf("\tHacia atras    = %.24f\n", exponencialAtras(x));
+	printf("-----------------------------------------------------\n");
+	printf("Precision Doble:\n");
+	printf("\tHacia adelante = %.24lf\n", exponencialAdelanteD(x));
+	printf("\tHacia atras    = %.24lf\n", exponencialAtrasD(x));
+	
 	
 }
 
+// Funciones float
 float exponencialAdelante(float x){
-	float e=0;
-	float factorial=0, potencia=0, ant=1;
-	float i=0;
+	float e=0, factorial=0, potencia=0, ant=1, i=0;
 	
 	while(e != ant){
 		factorial = factorial == 0 ? 1 : factorial * i;
-		potencia = i == 0 ? 1 : potencia * x;
-		//~ printf("Potencia %f = %f\n", i, potencia);
-		//~ printf("Factorial %f = %f\n", i, factorial);
-		//~ printf("e = %f.20\n", e);
-		//~ printf("-------------\n");
+		potencia = (i++) == 0 ? 1 : potencia * x;
 		ant = e;
 		e += potencia / factorial;
-		i++;
 	}
 	
-	//~ printf("Potencia %f = %f\n", i-1, potencia);
-	//~ printf("Factorial %f = %f\n", i-1, factorial);
-	
-	printf("---------\n");
-	printf("e = %.20f\n", e);
-	
-	return factorial;
+	return e;
 }
 
 float exponencialAtras(float x){
-	float e=0;
-	float factorial=0, potencia=0;
-	float n=32;
+	float e=0, factorial=0, potencia=0, n=32;
 	
 	while(n >= 0){
 		factorial = fact(n);
-		potencia = pow(x, n);
-		//~ printf("Potencia %f = %.20f\n", n, potencia);
-		//~ printf("Factorial %f = %.20f\n", n, factorial);
-		//~ printf("e = %f.20\n", e);
-		//~ printf("-------------\n");
+		potencia = pow(x, (n--));
 		e += potencia / factorial;
-		n--;
 	}
 	
-	//~ printf("Potencia %f = %f\n", n, potencia);
-	//~ printf("Factorial %f = %f\n", n, factorial);
-	
-	printf("---------\n");
-	printf("e = %.20f\n", e);
-	
-	return factorial;
+	return e;
 }
 
 float fact(float n){
 	int i;
-	float f=1;
+	float f=1; 
+	for(i=1; i <= n; i++){
+		f *= i;
+	}
+	return f;
+}
+
+
+// Funciones double
+double exponencialAdelanteD(double x){
+	double e=0, factorial=0, potencia=0, ant=1, i=0;
+	
+	while(e != ant){
+		factorial = (factorial == 0 ? 1 : factorial * i);
+		potencia = ((i++) == 0 ? 1 : potencia * x);
+		ant = e;
+		e += potencia / factorial;
+	}
+	
+	return e;
+}
+
+double exponencialAtrasD(double x){
+	double e=0, factorial=0, potencia=0, n=32;
+	
+	while(n >= 0){
+		factorial = fact(n);
+		potencia = pow(x, (n--));
+		e += potencia / factorial;
+	}
+	
+	return e;
+}
+
+double factD(double n){
+	int i;
+	double f=1;
 	for(i=1; i <= n; i++){
 		f *= i;
 	}

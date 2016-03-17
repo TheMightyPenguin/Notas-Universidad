@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{courier}
 \usepackage{listings}
+\usepackage{minted}
 \usepackage{xcolor}
 \usepackage{blindtext}
 \usepackage{scrextend}
@@ -17,28 +18,7 @@
 \usepackage{amsmath}
  % % % % % % % %
 
-% Color para el fondo del codigo!
-\definecolor{light-gray}{rgb}{0.7421875, 0.7421875, 0.7421875}
-
-\lstdefinestyle{customc}{
-	belowcaptionskip=1\baselineskip,
-	breaklines=true,
-	frame=tlbr,
-	xleftmargin=0.7cm,
-	language=C,
-	showstringspaces=false,
-	basicstyle=\ttfamily\linespread{1.1}\footnotesize,
-	keywordstyle=\bfseries\color{green!40!black},
-	commentstyle=\itshape\color{purple!40!black},
-	identifierstyle=\color{blue},
-	stringstyle=\color{yellow},
-}
-
-\lstset{
-escapechar=@,
-style=customc,
-backgroundcolor=\color{light-gray}
-}
+\usemintedstyle{pastie}
 
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -70,14 +50,15 @@ backgroundcolor=\color{light-gray}
 \flushleft
 \setlength{\parindent}{20pt}
 
+\justify
 %%CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \centerline{\huge Tarea 1 \textbf{Calculo Computacional}}
 \centerline{Victor Tortolero CI:24.569.609}  % Pon tu nombre y Cedula!
 \hrule
-	
+
 %% Respuesta 1 %%%%%%%%%%%%%%%%%%	
 \section*{Respuesta 1}
-$\frac{A + 3}{13}$, como $A = 9$, tendríamos $\frac{9 + 3}{13} = \frac{12}{13}$.
+Tenemos que $\frac{A + 3}{13}$, como $A = 9$, tendríamos $\frac{9 + 3}{13} = \frac{12}{13}$.
 Ahora procedemos a convertir a binario. \newline
 \begin{multicols}{2}
 	$\frac{12}{13} \times 2 = \frac{24}{13}$, $b_{0} = 1$ \newline
@@ -105,7 +86,7 @@ y que $Fl(\frac{12}{13})_{Redondeado} = 0.111011000100111011000101$.
 	\text{\textbf{Por Truncamiento tenemos que:}} \\
 	E_{A} = |x - Fl(x)_{Truncado}| & = 0, \underbrace{000\dots000}_\text{24 Ceros}111011000100\dots \\
 	& = 0,\underbrace{111011000100111011000100}_\text{Esto es $\frac{12}{13}$}\dots \times 2^{-24} \\
-	& = \frac{12}{13} \times 2^{-24} \approx 5,50196 \times 10^{-8} \\ \midrule
+	& = \frac{12}{13} \times 2^{-24} \approx 5,50196 \times 10^{-8} \\
 	E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{12}{13} \times 2^{-24}}{\frac{12}{13}} \\
 	& = 2^{-24} \approx 5,96046 \times 10^{-8}
 \end{align*}
@@ -116,40 +97,115 @@ E_{A} = |x - Fl(x)_{Redondeado}| & = |x - (Fl(x)_{Truncado} + 1 \times 2^{-24})|
 & = |x - Fl(x)_{Truncado} - 1 \times 2^{-24}| \\
 & = |\frac{12}{13} \times 2^{-24} - 1 \times 2^{-24}|  \\
 & = |\frac{12}{13} - 1| \times 2^{-24} \\
-& = \frac{1}{13} \times 2^{-24} \approx 4,584 \times 10^{-9} \\ \midrule
+& = \frac{1}{13} \times 2^{-24} \approx 4,584 \times 10^{-9} \\
 E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{1}{13} \times 2^{-24}}{\frac{12}{13}} \\
 & = \frac{1}{12} \times 2^{-24} \approx 4,9670 \times 10^{-9}
 \end{align*}
-%% Fin respuesta 1 %%%%%%%%%%%%%%%%%%		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 
 
 %% Respuesta 2 %%%%%%%%%%%%%%%%%%%%%%
 \hrule
 \section*{Respuesta 2}
 
-%% Fin respuesta 2 %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %% Respuesta 3 %%%%%%%%%%%%%%%%%%%%%%
 \hrule
 \section*{Respuesta 3}
 
-%% Fin respuesta 3 %%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%FIN CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Codigo Fuente
+%% Respuesta 4 %%%%%%%%%%%%%%%%%%%%%%
+\hrule
+\section*{Respuesta 4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Respuesta 5 %%%%%%%%%%%%%%%%%%%%%%
+\hrule
+\section*{Respuesta 5}
+El mayor valor que llego a tomar la sumatoria fue \textbf{15.4036827008740234}.
+Fueron sumados \textbf{2097152 terminos}. 
+La computadora no llega infinito al realizar la sumatoria debido
+a la precisión decimal, llega a un punto en que la computadora al sumar dos números, las magnitudes entre ellos
+son muy distintas y por lo tanto se queda con el numero mas grande y es como si no se le sumara nada.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Respuesta 6 %%%%%%%%%%%%%%%%%%%%%%
+\hrule
+\section*{Respuesta 6}
+\begin{itemize}
+	\item \textbf{Con precisión simple}:
+	La mejor aproximación que se obtuvo para $x = 10$ fue $\boldsymbol{e^{10} = 22026.4667968750}$.
+	Este resultado se obtuvo al sumar los términos desde un $n = 0$, y hasta que la suma dejara de "sumar" por
+	las limitaciones de la precisión, y se llego a las \textbf{32 iteraciones}.
+	
+	Al cambiar el orden en que se suman los resultados, empezó desde $n = 32$ y se fue hasta $n = 0$, se obtuvo
+	$\boldsymbol{e^{10} = 22026.464843750}$.
+	
+	\item \textbf{Con precisión doble}:
+	La mejor aproximación que se obtuvo para $x = 10$ fue $\boldsymbol{e^{10} = 22026.4667968750}$.
+	Este resultado se obtuvo al sumar los términos desde un $n = 0$, y hasta que la suma dejara de "sumar" por
+	las limitaciones de la precisión, y se llego a las \textbf{32 iteraciones}.
+	
+	Al cambiar el orden en que se suman los resultados, empezó desde $n = 32$ y se fue hasta $n = 0$, se obtuvo
+	$\boldsymbol{e^{10} = 22026.464843750}$. 
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%FIN CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%
+
+
+
+% Codigo Fuente %%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \begin{centering}
-	\section*{Codigo Fuente}
+	\section*{Código Fuente}
 \end{centering}
 
 \section*{repuesta3.c}
-\lstinputlisting[language=C]{../Codigos/respuesta3.c}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]{c}{../Codigos/respuesta3.c}
+
+\newpage
+\section*{repuesta4.c}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]{c}{../Codigos/respuesta4.c}
 
 \newpage
 \section*{repuesta5.c}
-\lstinputlisting[language=C]{../Codigos/respuesta5.c}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]{c}{../Codigos/respuesta5.c}
+
+\newpage
+\section*{repuesta6.c}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]{c}{../Codigos/respuesta6.c}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
