@@ -5,8 +5,10 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{pdfpages}
 \usepackage{hyperref}
 \usepackage{courier}
+\usepackage{longtable}
 \usepackage{listings}
 \usepackage{minted}
 \usepackage{xcolor}
@@ -54,6 +56,7 @@
 %%CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \centerline{\huge Tarea 1 \textbf{Calculo Computacional}}
 \centerline{Victor Tortolero CI:24.569.609}  % Pon tu nombre y Cedula!
+\vspace{0.1cm}
 \hrule
 
 %% Respuesta 1 %%%%%%%%%%%%%%%%%%	
@@ -82,12 +85,12 @@ Por lo tanto tenemos que:
 Observemos que el numero que vendria luego del bit 24 seria un 1. Entonces a la hora de redondear se suma 1.
 Por lo tanto, tenemos que $Fl(\frac{12}{13})_{Truncado} = 0.111011000100111011000100$, 
 y que $Fl(\frac{12}{13})_{Redondeado} = 0.111011000100111011000101$.
-\begin{align*} % aqui empieza la locura xD
+\begin{align*}
 	\text{\textbf{Por Truncamiento tenemos que:}} \\
 	E_{A} = |x - Fl(x)_{Truncado}| & = 0, \underbrace{000\dots000}_\text{24 Ceros}111011000100\dots \\
 	& = 0,\underbrace{111011000100111011000100}_\text{Esto es $\frac{12}{13}$}\dots \times 2^{-24} \\
 	& = \frac{12}{13} \times 2^{-24} \approx 5,50196 \times 10^{-8} \\
-	E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{12}{13} \times 2^{-24}}{\frac{12}{13}} \\
+	E_{R} = \frac{E_{A}}{|x|} & = \frac{\frac{12}{13} \times 2^{-24}}{\frac{12}{13}} \\
 	& = 2^{-24} \approx 5,96046 \times 10^{-8}
 \end{align*}
 
@@ -98,7 +101,7 @@ E_{A} = |x - Fl(x)_{Redondeado}| & = |x - (Fl(x)_{Truncado} + 1 \times 2^{-24})|
 & = |\frac{12}{13} \times 2^{-24} - 1 \times 2^{-24}|  \\
 & = |\frac{12}{13} - 1| \times 2^{-24} \\
 & = \frac{1}{13} \times 2^{-24} \approx 4,584 \times 10^{-9} \\
-E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{1}{13} \times 2^{-24}}{\frac{12}{13}} \\
+E_{R} = \frac{E_{A}}{|x|} & = \frac{\frac{1}{13} \times 2^{-24}}{\frac{12}{13}} \\
 & = \frac{1}{12} \times 2^{-24} \approx 4,9670 \times 10^{-9}
 \end{align*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
@@ -107,7 +110,68 @@ E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{1}{13} \times 2^{-24}}{\frac{12}{13}} 
 %% Respuesta 2 %%%%%%%%%%%%%%%%%%%%%%
 \hrule
 \section*{Respuesta 2}
+Tenemos $245696,09_{10}$, procedemos a convertirlo a binario:
 
+\begin{itemize}
+	\item \textbf{Parte Entera}:
+	\begin{multicols}{2}
+		$\frac{245696}{2} = 122848$, $b_{17} = 0$ \newline
+		$\frac{122848}{2} = 61424$, $b_{16} = 0$ \newline
+		$\frac{61424}{2} = 30712$, $b_{15} = 0$ \newline
+		$\frac{30712}{2} = 15356$, $b_{14} = 0$ \newline
+		$\frac{15356}{2} = 7678$, $b_{13} = 0$ \newline
+		$\frac{7678}{2} = 3839$, $b_{12} = 0$ \newline
+		$\frac{3839}{2} = 1919$, $b_{11} = 1$ \newline
+		$\frac{1919}{2} = 959$, $b_{10} = 1$ \newline
+		$\frac{959}{2} = 479$, $b_{09} = 1$ \newline
+		$\frac{479}{2} = 239$, $b_{08} = 1$ \newline
+		$\frac{239}{2} = 119$, $b_{07} = 1$ \newline
+		$\frac{119}{2} = 59$, $b_{06} = 1$ \newline
+		$\frac{59}{2} = 29$, $b_{05} = 1$ \newline
+		$\frac{29}{2} = 14$, $b_{04} = 1$ \newline
+		$\frac{14}{2} = 7$, $b_{03} = 0$ \newline
+		$\frac{7}{2} = 7$, $b_{02} = 1$ \newline
+		$\frac{3}{2} = 1$, $b_{01} = 1$ \newline
+		$\frac{1}{2} = 0$, $b_{00} = 1$ \newline
+	\end{multicols}
+	Por lo tanto tenemos que $245696_{10} = 111011111111000000_{2}$.
+	
+	\item \textbf{Parte Decimal}:
+	\begin{multicols}{2}
+		$\frac{9}{100} \times 2 = \frac{18}{100}$, $b_{0} = 0$ \newline
+		$\frac{18}{100} \times 2 = \frac{36}{100}$, $b_{1} = 0$ \newline
+		$\frac{36}{100} \times 2 = \frac{27}{100}$, $b_{2} = 0$ \newline
+		$\frac{72}{100} \times 2 = \frac{144}{100}$, $b_{3} = 1$ \newline
+		$\frac{44}{100} \times 2 = \frac{88}{100}$, $b_{4} = 0$ \newline
+		$\frac{88}{100} \times 2 = \frac{176}{100}$, $b_{5} = 1$ \newline
+		$\frac{76}{100} \times 2 = \frac{152}{100}$, $b_{6} = 1$ \newline
+		$\frac{52}{100} \times 2 = \frac{104}{100}$, $b_{7} = 1$ \newline
+	\end{multicols}
+	Por lo tanto tenemos que $0,09_{10} = 00010111$.
+\end{itemize}
+{\noindent
+	Entonces se tiene que $245696,09_{10} \approx \overbrace{111011111111000000,000101}^{24 bits}11_{2}$. \newline
+
+\noindent	
+	Si usamos \textbf{redondeo:} \newline
+	$\boldsymbol{Fl(245696,09)_{Redondeado} = 0,111011111111000000000110 \times 2^{18}}$
+	\newline
+
+\noindent	
+	Si representamos este numero de vuelta en \textbf{decimal:} \newline
+	$\boldsymbol{111011111111000000,000110_{2} = 245696,09375_{10}}$. \newline
+	
+
+\noindent	
+	\textbf{Error absoluto y relativo}:
+	\begin{align*}
+	E_{A} = |x - Fl(x)_{Redondeado}| & = |245696,09 - 245696,09375| \\
+	& = -3.75 \times 10^{-3} \\
+	E_{R} = \frac{E_{A}}{|x|} & = \frac{-3,75 \times 10^{-3}}{245696,09} \approx -1.526275815 \times 10^{-8} \\
+	\end{align*}
+}
+
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -115,13 +179,127 @@ E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{1}{13} \times 2^{-24}}{\frac{12}{13}} 
 \hrule
 \section*{Respuesta 3}
 
+
+
+Después de correr el programa, se obtuvieron los siguientes datos
+\begin{itemize}
+	\item \textbf{Para simple precisión}:
+	$\epsilon = 0.0000001192092895507812500000000000$ \newline
+	\begin{longtable}{|c||c|c|}
+		\hline
+		Iteracion & t & $\epsilon$ \\ \hline \hline
+		1 & 1.500000000000000000000000 & 0.5000000000000000000000000000000000 \\  \hline
+		2 & 1.250000000000000000000000 & 0.2500000000000000000000000000000000 \\  \hline
+		3 & 1.125000000000000000000000 & 0.1250000000000000000000000000000000 \\  \hline
+		4 & 1.062500000000000000000000 & 0.0625000000000000000000000000000000 \\  \hline
+		5 & 1.031250000000000000000000 & 0.0312500000000000000000000000000000 \\  \hline
+		6 & 1.015625000000000000000000 & 0.0156250000000000000000000000000000 \\  \hline
+		7 & 1.007812500000000000000000 & 0.0078125000000000000000000000000000 \\  \hline
+		8 & 1.003906250000000000000000 & 0.0039062500000000000000000000000000 \\  \hline
+		9 & 1.001953125000000000000000 & 0.0019531250000000000000000000000000 \\  \hline
+		10 & 1.000976562500000000000000 & 0.0009765625000000000000000000000000 \\  \hline
+		11 & 1.000488281250000000000000 & 0.0004882812500000000000000000000000 \\  \hline
+		12 & 1.000244140625000000000000 & 0.0002441406250000000000000000000000 \\  \hline
+		13 & 1.000122070312500000000000 & 0.0001220703125000000000000000000000 \\  \hline
+		14 & 1.000061035156250000000000 & 0.0000610351562500000000000000000000 \\  \hline
+		15 & 1.000030517578125000000000 & 0.0000305175781250000000000000000000 \\  \hline
+		16 & 1.000015258789062500000000 & 0.0000152587890625000000000000000000 \\  \hline
+		17 & 1.000007629394531200000000 & 0.0000076293945312500000000000000000 \\  \hline
+		18 & 1.000003814697265600000000 & 0.0000038146972656250000000000000000 \\  \hline
+		19 & 1.000001907348632800000000 & 0.0000019073486328125000000000000000 \\  \hline
+		20 & 1.000000953674316400000000 & 0.0000009536743164062500000000000000 \\  \hline
+		21 & 1.000000476837158200000000 & 0.0000004768371582031250000000000000 \\  \hline
+		22 & 1.000000238418579100000000 & 0.0000002384185791015625000000000000 \\  \hline
+		23 & 1.000000119209289600000000 & 0.0000001192092895507812500000000000 \\  \hline
+		24 & 1.000000000000000000000000 & 0.0000000596046447753906250000000000 \\  \hline
+	\end{longtable}
+	
+	\vspace{0.2cm}
+	\item \textbf{Para doble precisión}:
+	$\epsilon =  0.0000000000000002220446049250313100$ \newline
+	\begin{longtable}{|c||c|c|}
+		\hline
+		Iteracion & t & $\epsilon$ \\ \hline \hline
+		1 & 1.500000000000000000000000 & 0.5000000000000000000000000000000000 \\ \hline 
+		2 & 1.250000000000000000000000 & 0.2500000000000000000000000000000000 \\ \hline 
+		3 & 1.125000000000000000000000 & 0.1250000000000000000000000000000000 \\ \hline 
+		4 & 1.062500000000000000000000 & 0.0625000000000000000000000000000000 \\ \hline 
+		5 & 1.031250000000000000000000 & 0.0312500000000000000000000000000000 \\ \hline 
+		6 & 1.015625000000000000000000 & 0.0156250000000000000000000000000000 \\ \hline 
+		7 & 1.007812500000000000000000 & 0.0078125000000000000000000000000000 \\ \hline 
+		8 & 1.003906250000000000000000 & 0.0039062500000000000000000000000000 \\ \hline 
+		9 & 1.001953125000000000000000 & 0.0019531250000000000000000000000000 \\ \hline 
+		10 & 1.000976562500000000000000 & 0.0009765625000000000000000000000000 \\ \hline 
+		11 & 1.000488281250000000000000 & 0.0004882812500000000000000000000000 \\ \hline 
+		12 & 1.000244140625000000000000 & 0.0002441406250000000000000000000000 \\ \hline 
+		13 & 1.000122070312500000000000 & 0.0001220703125000000000000000000000 \\ \hline 
+		14 & 1.000061035156250000000000 & 0.0000610351562500000000000000000000 \\ \hline 
+		15 & 1.000030517578125000000000 & 0.0000305175781250000000000000000000 \\ \hline 
+		16 & 1.000015258789062500000000 & 0.0000152587890625000000000000000000 \\ \hline 
+		17 & 1.000007629394531200000000 & 0.0000076293945312500000000000000000 \\ \hline 
+		18 & 1.000003814697265600000000 & 0.0000038146972656250000000000000000 \\ \hline 
+		19 & 1.000001907348632800000000 & 0.0000019073486328125000000000000000 \\ \hline 
+		20 & 1.000000953674316400000000 & 0.0000009536743164062500000000000000 \\ \hline 
+		21 & 1.000000476837158200000000 & 0.0000004768371582031250000000000000 \\ \hline 
+		22 & 1.000000238418579100000000 & 0.0000002384185791015625000000000000 \\ \hline 
+		23 & 1.000000119209289600000000 & 0.0000001192092895507812500000000000 \\ \hline 
+		24 & 1.000000059604644800000000 & 0.0000000596046447753906250000000000 \\ \hline 
+		25 & 1.000000029802322400000000 & 0.0000000298023223876953130000000000 \\ \hline 
+		26 & 1.000000014901161200000000 & 0.0000000149011611938476560000000000 \\ \hline 
+		27 & 1.000000007450580600000000 & 0.0000000074505805969238281000000000 \\ \hline 
+		28 & 1.000000003725290300000000 & 0.0000000037252902984619141000000000 \\ \hline 
+		29 & 1.000000001862645100000000 & 0.0000000018626451492309570000000000 \\ \hline 
+		30 & 1.000000000931322600000000 & 0.0000000009313225746154785200000000 \\ \hline 
+		31 & 1.000000000465661300000000 & 0.0000000004656612873077392600000000 \\ \hline 
+		32 & 1.000000000232830600000000 & 0.0000000002328306436538696300000000 \\ \hline 
+		33 & 1.000000000116415300000000 & 0.0000000001164153218269348100000000 \\ \hline 
+		34 & 1.000000000058207700000000 & 0.0000000000582076609134674070000000 \\ \hline 
+		35 & 1.000000000029103800000000 & 0.0000000000291038304567337040000000 \\ \hline 
+		36 & 1.000000000014551900000000 & 0.0000000000145519152283668520000000 \\ \hline 
+		37 & 1.000000000007276000000000 & 0.0000000000072759576141834259000000 \\ \hline 
+		38 & 1.000000000003638000000000 & 0.0000000000036379788070917130000000 \\ \hline 
+		39 & 1.000000000001819000000000 & 0.0000000000018189894035458565000000 \\ \hline 
+		40 & 1.000000000000909500000000 & 0.0000000000009094947017729282400000 \\ \hline 
+		41 & 1.000000000000454700000000 & 0.0000000000004547473508864641200000 \\ \hline 
+		42 & 1.000000000000227400000000 & 0.0000000000002273736754432320600000 \\ \hline 
+		43 & 1.000000000000113700000000 & 0.0000000000001136868377216160300000 \\ \hline 
+		44 & 1.000000000000056800000000 & 0.0000000000000568434188608080150000 \\ \hline 
+		45 & 1.000000000000028400000000 & 0.0000000000000284217094304040070000 \\ \hline 
+		46 & 1.000000000000014200000000 & 0.0000000000000142108547152020040000 \\ \hline 
+		47 & 1.000000000000007100000000 & 0.0000000000000071054273576010019000 \\ \hline 
+		48 & 1.000000000000003600000000 & 0.0000000000000035527136788005009000 \\ \hline 
+		49 & 1.000000000000001800000000 & 0.0000000000000017763568394002505000 \\ \hline 
+		50 & 1.000000000000000900000000 & 0.0000000000000008881784197001252300 \\ \hline 
+		51 & 1.000000000000000400000000 & 0.0000000000000004440892098500626200 \\ \hline 
+		52 & 1.000000000000000200000000 & 0.0000000000000002220446049250313100 \\ \hline 
+		53 & 1.000000000000000000000000 & 0.0000000000000001110223024625156500 \\ \hline 
+	\end{longtable}
+	
+	El valor de $\epsilon$ es distinto de $10^{-308}$, porque como estamos continuamente sumando
+	1 con $\epsilon$, y $\epsilon$ se vuelve mas pequeño con cada iteración, y su magnitud es muy pequeña
+	comparada con la de 1 y la suma de $1 + \epsilon$ deja de ser significativa.
+	
+	Para precisión simple $\delta = 0.00097656250$ y para precisión doble $\delta = 0.00000000000181898940354585650.$
+	
+	Los valores de $\epsilon$ y $\delta$ son distintos ya que la magnitud de 10000 es mucho mayor a la de 1 y por lo tanto
+	al sumarle números pequeños se llega de manera rápida a uno que no afecte la suma.
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %% Respuesta 4 %%%%%%%%%%%%%%%%%%%%%%
 \hrule
 \section*{Respuesta 4}
-
+\begin{itemize}
+	\item Ascendente precisión simple:
+	\item Ascendente precisión doble:
+	\item Descendente precisión simple:
+	\item Descendente precisión doble:
+	\item Mayor a menor precisión simple:
+	\item Mayor a menor precisión doble:
+	\item Menor a mayor precisión simple:
+	\item Menor a mayor precisión doble:
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -129,28 +307,30 @@ E_{R} = \frac{E_{A}}{|X|} & = \frac{\frac{1}{13} \times 2^{-24}}{\frac{12}{13}} 
 \hrule
 \section*{Respuesta 5}
 El mayor valor que llego a tomar la sumatoria fue \textbf{15.4036827008740234}.
-Fueron sumados \textbf{2097152 terminos}. 
+Fueron sumados \textbf{2097152 términos} antes de que la computadora dejara de "sumar".
+
 La computadora no llega infinito al realizar la sumatoria debido
 a la precisión decimal, llega a un punto en que la computadora al sumar dos números, las magnitudes entre ellos
 son muy distintas y por lo tanto se queda con el numero mas grande y es como si no se le sumara nada.
+\vspace{0.3cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %% Respuesta 6 %%%%%%%%%%%%%%%%%%%%%%
 \hrule
 \section*{Respuesta 6}
-\begin{itemize}
-	Para $x = 10$, con precisión simple tenemos que $\boldsymbol{e^{10} = 22026.4667968750}$,
-	este resultado se obtuvo al sumar los términos desde un $n = 0$, y hasta que la suma dejara de "sumar",
-	usando al final \textbf{32 iteraciones}.
+Para $x = 10$, con precisión simple tenemos que $\boldsymbol{e^{10} = 22026.4667968750}$,
+este resultado se obtuvo al sumar los términos desde un $n = 0$, y hasta que la suma dejara de "sumar",
+usando al final \textbf{32 iteraciones}.
 
-	Y para precision doble tenemos $\boldsymbol{e^{10} = 22026.465760913433769019320607185363769531250}$.
-	que se obtuvo al cambiar el orden en que se suma y se empezo desde $n = 32$ hasta $n = 0$. En este caso usamos \textbf{32 iteraciones}.
+Y para precisión doble tenemos $\boldsymbol{e^{10} = 22026.465760913433769019320607185363769531250}$.
+que se obtuvo al cambiar el orden en que se suma y se empezó desde $n = 32$ hasta $n = 0$. 
+En este caso usamos \textbf{32 iteraciones}.
 
-	
-
-\end{itemize}
+Si se empezara desde un $n$ muy grande y hasta $n = 0$, se tendría un resultado mas preciso.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \includepdf[scale=0.8,pages=1,pagecommand=\subsection*{Enunciado Original}]{../Primera_tarea_Semestre_I_2016}
 
 %%FIN CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%
 

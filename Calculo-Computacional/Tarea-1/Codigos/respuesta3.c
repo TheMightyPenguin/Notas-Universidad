@@ -1,28 +1,32 @@
 #include <stdio.h>
 
-void singlePrecision();
-void doublePrecision();
+void singlePrecision(float);
+void doublePrecision(double);
 
 int main(){
-	singlePrecision();
-	doublePrecision();
+	singlePrecision(1);
+	doublePrecision(1);
+	singlePrecision(10000);
+	doublePrecision(10000);
 }
 
-void singlePrecision(){
-	float t=1.1, epsilon=1;
+void singlePrecision(float x){
+	float t = 2 * x, epsilon=1;
 	int i=1;
-	while(t > 1){
-		t = 1 + (epsilon *= 0.5);
-		printf("(%d)t=%.24lf, epsilon=%.24lf\n", i++, t, epsilon);
+	while(t > x){
+		t = x + (epsilon *= 0.5);
+		printf("i=%d t=%.24f epsilon=%.34f\n", i, t, epsilon);
+		i++;
 	}
 }
 
-void doublePrecision(){
-	double t=1.1, epsilon=1;
+void doublePrecision(double x){
+	double t=2 * x, epsilon=1;
 	int i=1;
-	while(t > 1){
-		t = 1 + (epsilon *= 0.5);
-		printf("(%d)t=%.24lf, epsilon=%.24lf\n", i++, t, epsilon);
+	do(t > x){
+		t = x + (epsilon *= 0.5);
+		printf("i=%d t=%.24lf epsilon=%.34lf\n", i, t, epsilon);
+		i++;
 	}
 }
 
