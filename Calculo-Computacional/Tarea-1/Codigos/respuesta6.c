@@ -23,14 +23,14 @@ int main(){
 
 // Funciones float
 float exponencialAdelante(float x){
-	float e=0, factorial=1, potencia=1, ant=1, i=0;
+	float e=0, factorial=1, potencia=1, ant, i=0;
 	
-	while(e != ant){
+	do{
 		factorial *= i;
 		potencia *= x;
 		ant = e;
 		e += potencia / factorial;
-	}
+	}while(e != ant);
 
 	return e;
 }
@@ -59,14 +59,14 @@ float fact(float n){
 
 // Funciones double
 double exponencialAdelanteD(double x){
-	double e=0, factorial=0, potencia=0, ant=1, i=0;
+	double e=0, factorial=0, potencia=0, ant, i=0;
 	
-	while(e != ant){
+	do{
 		factorial = (factorial == 0 ? 1 : factorial * i);
 		potencia = ((i++) == 0 ? 1 : potencia * x);
 		ant = e;
 		e += potencia / factorial;
-	}
+	}while(e != ant);
 	
 	return e;
 }

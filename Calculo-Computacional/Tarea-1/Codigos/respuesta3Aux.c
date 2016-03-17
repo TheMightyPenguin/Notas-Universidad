@@ -1,37 +1,36 @@
 #include <stdio.h>
 
-void singlePrecision();
-void doublePrecision();
+void singlePrecision(float);
+void doublePrecision(double);
 
 int main(){
-	singlePrecision();
-	doublePrecision();
+	singlePrecision(1);
+	doublePrecision(1);
 }
 
-void singlePrecision(){
-	float t=1.1, epsilon=1;
+void singlePrecision(float x){
+	float t, epsilon=1;
 	int i=1;
 	FILE *f;
 	f = fopen("out.txt", "w");
-	while(t > 1){
-		t = 1 + (epsilon *= 0.5);
-		//~ fprintf(f, "(%d)t=%.24lf, epsilon=%.34lf \\\\ \\n", i, t, epsilon);
-		fprintf(f, "%d & %.24lf & %.34lf \\\\ \\hline \n", i, t, epsilon);
+	do{
+		t = x + (epsilon *= 0.5);
+		fprintf(f, "%d & %.24f & %.34f \\\\ \\hline \n", i, t, epsilon);
 		i++;
-	}
+	}while(t > x);	
 	fclose(f);
 }
 
-void doublePrecision(){
-	double t=1.1, epsilon=1;
+void doublePrecision(double x){
+	double t, epsilon=1;
 	int i=1;
 	FILE *f;
 	f = fopen("out2.txt", "w");
-	while(t > 1){
-		t = 1 + (epsilon *= 0.5);
-		fprintf(f, "%d & %.24lf & %.34lf \\\\ \\hline \n", i, t, epsilon);
+	do{
+		t = x + (epsilon *= 0.5);
+		fprintf(f, "%d & %.24lf & %.54lf \\\\ \\hline \n", i, t, epsilon);
 		i++;
-	}
+	}while(t > x);
 	fclose(f);
 }
 
