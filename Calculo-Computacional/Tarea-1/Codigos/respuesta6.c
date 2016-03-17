@@ -23,11 +23,11 @@ int main(){
 
 // Funciones float
 float exponencialAdelante(float x){
-	float e=0, factorial=0, potencia=0, ant=1, i=0;
+	float e=0, factorial=1, potencia=1, ant=1, i=0;
 	
 	while(e != ant){
-		factorial = factorial == 0 ? 1 : factorial * i;
-		potencia = (i++) == 0 ? 1 : potencia * x;
+		factorial *= i;
+		potencia *= x;
 		ant = e;
 		e += potencia / factorial;
 	}
