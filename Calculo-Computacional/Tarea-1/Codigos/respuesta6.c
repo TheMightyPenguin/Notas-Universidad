@@ -11,12 +11,12 @@ double factD(double);
 int main(){
 	float x=10;
 	printf("Precision Simple:\n");
-	printf("\tHacia adelante = %.24f\n", exponencialAdelante(x));
-	printf("\tHacia atras    = %.24f\n", exponencialAtras(x));
+	printf("\tHacia adelante = %.54f\n", exponencialAdelante(x));
+	printf("\tHacia atras    = %.54f\n", exponencialAtras(x));
 	printf("-----------------------------------------------------\n");
 	printf("Precision Doble:\n");
-	printf("\tHacia adelante = %.24lf\n", exponencialAdelanteD(x));
-	printf("\tHacia atras    = %.24lf\n", exponencialAtrasD(x));
+	printf("\tHacia adelante = %.54lf\n", exponencialAdelanteD(x));
+	printf("\tHacia atras    = %.54lf\n", exponencialAtrasD(x));
 	
 	
 }
@@ -31,12 +31,12 @@ float exponencialAdelante(float x){
 		ant = e;
 		e += potencia / factorial;
 	}
-	
+
 	return e;
 }
 
 float exponencialAtras(float x){
-	float e=0, factorial=0, potencia=0, n=32;
+	float e=0, factorial=0, potencia=0, n=33;
 	
 	while(n >= 0){
 		factorial = fact(n);
@@ -72,7 +72,7 @@ double exponencialAdelanteD(double x){
 }
 
 double exponencialAtrasD(double x){
-	double e=0, factorial=0, potencia=0, n=32;
+	double e=0, factorial=0, potencia=0, n=33;
 	
 	while(n >= 0){
 		factorial = fact(n);
