@@ -8,3 +8,7 @@
   - [ ] Respuesta 4
   - [ ] Respuesta 5
   - [ ] Respuesta 6
+---
+- Sistemas Operativos
+  - Leer acerca de: Algoritmos de planifacion del procesador :pizza: :computer: :pizza:
+  - Presentacion explicando Algoritmos de planifacion del procesador
