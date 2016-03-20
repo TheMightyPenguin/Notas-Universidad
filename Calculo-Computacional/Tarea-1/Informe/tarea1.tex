@@ -166,12 +166,10 @@ Tenemos $245696,09_{10}$, procedemos a convertirlo a binario:
 	\textbf{Error absoluto y relativo}:
 	\begin{align*}
 	E_{A} = |x - Fl(x)_{Redondeado}| & = |245696,09 - 245696,09375| \\
-	& = -3.75 \times 10^{-3} \\
-	E_{R} = \frac{E_{A}}{|x|} & = \frac{-3,75 \times 10^{-3}}{245696,09} \approx -1.526275815 \times 10^{-8} \\
+	& = 3.75 \times 10^{-3} \\
+	E_{R} = \frac{E_{A}}{|x|} & = \frac{3,75 \times 10^{-3}}{245696,09} \approx -1.526275815 \times 10^{-8} \\
 	\end{align*}
-}
-
-	
+}	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -280,7 +278,8 @@ Después de correr el programa, se obtuvieron los siguientes datos
 	1 con $\epsilon$, y $\epsilon$ se vuelve mas pequeño con cada iteración, y su magnitud es muy pequeña
 	comparada con la de 1 y la suma de $1 + \epsilon$ deja de ser significativa.
 	
-	Para precisión simple $\delta = 0.00097656250$ y para precisión doble $\delta = 0.00000000000181898940354585650.$
+	Para precisión simple $\boldsymbol{\delta = 0.00097656250}$\newline.
+	Para precisión doble $\boldsymbol{\delta = 0.00000000000181898940354585650}$
 	
 	Los valores de $\epsilon$ y $\delta$ son distintos ya que la magnitud de 10000 es mucho mayor a la de 1 y por lo tanto
 	al sumarle números pequeños se llega de manera rápida a uno que no afecte la suma.
@@ -301,8 +300,11 @@ Después de correr el programa, se obtuvieron los siguientes datos
 	\item Menor a mayor precisión simple: $-3.250$ 
 	\item Menor a mayor precisión doble: $-2.7182818278670310974121093750$
 \end{enumerate}
-	El resultado de (6) esta mas cerca del valor exacto, ya que es double y tiene mas precisión
-	y pórque por el orden en que se suma
+	El resultado de (6) esta mas cerca del valor exacto, ya que es doble precisión
+	y porque al sumar los números pequeños primero hay cierta probabilidad de que
+	luego al tener esta suma parcial y sumarla con el resto de los números no
+	se pierda información y tengamos un resultado mas preciso.
+	\vspace{0.3cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -324,14 +326,14 @@ son muy distintas y por lo tanto se queda con el numero mas grande y es como si 
 \section*{Respuesta 6}
 Para $x = 10$, con precisión simple tenemos que $\boldsymbol{e^{10} = 22026.4667968750}$,
 este resultado se obtuvo al sumar los términos desde un $n = 0$, y hasta que la suma dejara de "sumar",
-usando al final \textbf{32 iteraciones}.
+usando al final \textbf{33 iteraciones}.
 
-Y para precisión doble tenemos $\boldsymbol{e^{10} = 22026.465876076781569281592965126037597656250}$.
-que se obtuvo al cambiar el orden en que se suma y se empezó desde $n = 32$ hasta $n = 0$. 
-En este caso usamos \textbf{32 iteraciones}.
+Y para precisión doble tenemos $\boldsymbol{e^{10} = 22026.46579480671061901375651359558105468750}$,
+con \textbf{47 iteraciones}.
 
-Si se empezara desde un $n$ muy grande y hasta $n = 0$, se tendría un resultado mas preciso.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+En este caso por como crece la sumatoria (o la exponencial), es mejor sumar
+en orden ascendente ya que los valores al principio tienen menos diferencia de magnitud y es mas probable
+obtener un resultado mas exacto.
 
 %% \includepdf[scale=0.8,pages=1,pagecommand=\subsection*{Enunciado Original}]{../Primera_tarea_Semestre_I_2016}
 
@@ -340,49 +342,19 @@ Si se empezara desde un $n$ muy grande y hasta $n = 0$, se tendría un resultado
 
 
 % Codigo Fuente %%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\begin{centering}
-	\section*{Código Fuente}
-\end{centering}
+%\newpage
+%\begin{centering}
+%	\section*{Código Fuente}
+%\end{centering}
 
-\section*{repuesta3.c}
-\inputminted[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-fontsize=\footnotesize,
-linenos
-]{c}{../Codigos/respuesta3.c}
-
-\newpage
-\section*{repuesta4.c}
-\inputminted[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-fontsize=\footnotesize,
-linenos
-]{c}{../Codigos/respuesta4.c}
-
-\newpage
-\section*{repuesta5.c}
-\inputminted[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-fontsize=\footnotesize,
-linenos
-]{c}{../Codigos/respuesta5.c}
-
-\newpage
-\section*{repuesta6.c}
-\inputminted[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-fontsize=\footnotesize,
-linenos
-]{c}{../Codigos/respuesta6.c}
+%\section*{repuesta3.c}
+%\inputminted[
+%frame=lines,
+%framesep=2mm,
+%baselinestretch=1.2,
+%fontsize=\footnotesize,
+%linenos
+%]{c}{../Codigos/respuesta3.c}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
