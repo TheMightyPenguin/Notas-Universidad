@@ -1,0 +1,222 @@
+\documentclass{beamer}
+
+%--% Paquetes %----------------------------------%
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage[document]{ragged2e}
+\usepackage{multicol}
+\usepackage{pgfgantt}
+\usepackage{minted}
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath}
+\usepackage{wrapfig,lipsum,booktabs}
+%------------------------------------------------%
+
+\usetikzlibrary{positioning,fit,calc}
+
+\makeatletter
+\newcommand*{\MoveFitHeight}[1]{%
+	\pgfmathsetlengthmacro\fit@inner@sep{%
+		\pgfkeysvalueof{/pgf/inner xsep}%
+	}%
+	\pgfmathsetlengthmacro\fit@text@height{%
+		\tikz@text@height
+	}%
+	\kern-\fit@inner@sep\relax
+	\raisebox{\fit@text@height}[0pt][0pt]{#1}%
+}
+\makeatother
+
+\newcommand{\algTitle}{\textbf{Algoritmo}: }
+
+%--% Personal Info %-----------------------------%
+\title{Algoritmos de Planificación del Procesador}
+\author{Victor Tortolero}
+\institute{
+	Universidad de Carabobo \\
+	Facultad de Ciencia y Tecnología \\
+	Sistemas Operativos
+}
+\date{\today}
+%------------------------------------------------%
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% FCSFS
+\begin{frame}
+\frametitle{\algTitle First Come, First Serve (FCFS)}
+\begin{itemize}
+	\item \textbf{Ventajas}
+	\begin{itemize}
+		\item Es fácil de entender e implementar.
+		\item Aunque normalmente es justo en como dedica tiempo de CPU a los procesos,
+		los procesos largos hacen esperar a los cortos.
+	\end{itemize}
+	
+	\item \textbf{Desventajas}
+	\begin{itemize}
+		\item El tiempo de espera es alto por lo que carece de rendimiento.
+		\item No apropiativo.
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}[box/.style={draw,minimum width=2cm, minimum height=1cm,align=center}, node distance=0cm and 0cm]
+		\node[box, minimum width=3cm] (N1) {$P_{0}$};
+		\node[box, minimum width=0.4cm, right=of N1] (N2) {$P_{1}$};
+		\node[box, minimum width=0.8cm, right=of N2] (N3) {$P_{2}$};
+		\node[, dashed, inner sep=2pt, fit={(N1) (N2)}, align=left,] (fit) {\MoveFitHeight{0}};
+		\node[, dashed, inner sep=2pt, fit={(N2) (N3)}, align=left,] (fit) {\MoveFitHeight{20}};
+		\node[, dashed, inner sep=2pt, fit={(N3) (N3)}, align=left,] (fit) {\MoveFitHeight{26}};
+		\node[, dashed, inner sep=2pt, fit={(N3) (N3)}, align=right,] (fit) {\MoveFitHeight{35}};
+		\end{tikzpicture}	
+		\caption{FCFS, Ejemplo 1}
+		\label{gantt:FCFS1}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}[box/.style={draw,minimum width=2cm, minimum height=1cm,align=center}, node distance=0cm and 0cm]
+		\node[box, minimum width=0.4cm] (N1) {$P_{1}$};
+		\node[box, minimum width=0.8cm, right=of N1] (N2) {$P_{2}$};
+		\node[box, minimum width=3cm, right=of N2] (N3) {$P_{0}$};
+		\node[, dashed, inner sep=2pt, fit={(N1) (N2)}, align=left,] (fit) {\MoveFitHeight{0}};
+		\node[, dashed, inner sep=2pt, fit={(N2) (N3)}, align=left,] (fit) {\MoveFitHeight{6}};
+		\node[, dashed, inner sep=2pt, fit={(N3) (N3)}, align=left,] (fit) {\MoveFitHeight{15}};
+		\node[, dashed, inner sep=2pt, fit={(N3) (N3)}, align=right,] (fit) {\MoveFitHeight{35}};
+		\end{tikzpicture}
+		\caption{FCFS, Ejemplo 2}
+		\label{gantt:FCFS2}
+	\end{minipage}
+\end{figure}
+\end{frame}
+
+% Round Robin
+\begin{frame}
+\frametitle{\algTitle Round Robin (RR)}
+\begin{itemize}
+	\item \textbf{Ventajas}
+	\begin{itemize}
+		\item Es justo con todos los procesos.
+		\item Es apropiativo.
+	\end{itemize}
+	
+	\item \textbf{Desventajas}
+	\begin{itemize}
+		\item Si el valor del quantum es mayor que el tiempo requerido 
+		por el proceso mas largo, se convierte en FCFS.
+		\item Si el valor del quantum es muy pequeño se producen muchos
+		cambios de contexto lo que es ineficiente.
+	\end{itemize}
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}[box/.style={draw,minimum width=2cm, minimum height=1cm,align=center}, node distance=0cm and 0cm]
+		\node[box, minimum width=1.2cm] (N1) {$P_{0}$};
+		\node[box, minimum width=0.9cm, right=of N1] (N2) {$P_{1}$};
+		\node[box, minimum width=1.2cm, right=of N2] (N3) {$P_{2}$};
+		\node[box, minimum width=0.6cm, right=of N3] (N4) {$P_{1}$};
+		\node[box, minimum width=1.2cm, right=of N4] (N5) {$P_{2}$};
+		\node[dashed, inner sep=2pt, fit={(N1) (N2)}, align=left,] (fit) {\MoveFitHeight{0}};
+		\node[dashed, inner sep=2pt, fit={(N2) (N3)}, align=left,] (fit) {\MoveFitHeight{4}};
+		\node[dashed, inner sep=2pt, fit={(N3) (N4)}, align=left,] (fit) {\MoveFitHeight{7}};
+		\node[dashed, inner sep=2pt, fit={(N4) (N5)}, align=left,] (fit) {\MoveFitHeight{11}};
+		\node[dashed, inner sep=2pt, fit={(N5) (N5)}, align=left,] (fit) {\MoveFitHeight{12}};
+		\node[dashed, inner sep=2pt, fit={(N5) (N5)}, align=right,] (fit) {\MoveFitHeight{16}};
+		\end{tikzpicture}
+		\caption{RR, Q = 4}
+		\label{gantt:RR1}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}[box/.style={draw,minimum width=2cm, minimum height=1cm,align=center}, node distance=0cm and 0cm]
+		\node[box, minimum width=1.2cm] (N1) {$P_{0}$};
+		\node[box, minimum width=0.9cm, right=of N1] (N2) {$P_{1}$};
+		\node[box, minimum width=1.2cm, right=of N2] (N3) {$P_{2}$};
+		\node[dashed, inner sep=2pt, fit={(N1) (N2)}, align=left,] (fit) {\MoveFitHeight{0}};
+		\node[dashed, inner sep=2pt, fit={(N2) (N3)}, align=left,] (fit) {\MoveFitHeight{5}};
+		\node[dashed, inner sep=2pt, fit={(N3) (N3)}, align=left,] (fit) {\MoveFitHeight{8}};
+		\node[dashed, inner sep=2pt, fit={(N3) (N3)}, align=right,] (fit) {\MoveFitHeight{16}};
+		\end{tikzpicture}
+		\caption{RR, Q = 8}
+		\label{gantt:RR2}
+	\end{minipage}\hfill
+\end{figure}
+\end{frame}
+	
+
+% Prioridades
+\begin{frame}
+\frametitle{\algTitle Prioridades}
+\begin{itemize}
+	\item \textbf{Ventajas}
+	\begin{itemize}
+		\item Puede ser apropiativo o no apropiativo.
+	\end{itemize}
+	
+	\item \textbf{Desventajas}
+	\begin{itemize}
+		\item Si no se usa envejecimiento, un proceso con muy baja prioridad puede llegar
+		a no ejecutarse nunca.
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}[box/.style={draw,minimum width=2cm, minimum height=1cm,align=center}, node distance=0cm and 0cm]
+		\node[box, minimum width=0.6cm] (N1) {$P_{0}$};
+		\node[box, minimum width=0.9cm, right=of N1] (N2) {$P_{1}$};
+		\node[box, minimum width=1.6cm, right=of N2] (N3) {$P_{2}$};
+		\node[box, minimum width=1.1cm, right=of N3] (N4) {$P_{0}$};
+		\node[, dashed, inner sep=2pt, fit={(N1) (N2)}, align=left,] (fit) {\MoveFitHeight{0}};
+		\node[, dashed, inner sep=2pt, fit={(N2) (N3)}, align=left,] (fit) {\MoveFitHeight{1}};
+		\node[, dashed, inner sep=2pt, fit={(N3) (N4)}, align=left,] (fit) {\MoveFitHeight{4}};
+		\node[, dashed, inner sep=4pt, fit={(N4) (N4)}, align=left,] (fit) {\MoveFitHeight{12}};
+		\node[, dashed, inner sep=2pt, fit={(N4) (N4)}, align=right,] (fit) {\MoveFitHeight{16}};
+		\end{tikzpicture}
+		\caption{Prioridades, Sin envejecimiento}
+		\label{gantt:Prioridades1}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}[box/.style={draw,minimum width=2cm, minimum height=1cm,align=center}, node distance=0cm and 0cm]
+		\node[box, minimum width=0.6cm] (N1) {$P_{0}$};
+		\node[box, minimum width=0.9cm, right=of N1] (N2) {$P_{1}$};
+		\node[box, minimum width=1.1cm, right=of N2] (N3) {$P_{0}$};
+		\node[box, minimum width=1.6cm, right=of N3] (N4) {$P_{2}$};
+		\node[, dashed, inner sep=2pt, fit={(N1) (N2)}, align=left,] (fit) {\MoveFitHeight{0}};
+		\node[, dashed, inner sep=2pt, fit={(N2) (N3)}, align=left,] (fit) {\MoveFitHeight{1}};
+		\node[, dashed, inner sep=2pt, fit={(N3) (N4)}, align=left,] (fit) {\MoveFitHeight{4}};
+		\node[, dashed, inner sep=4pt, fit={(N4) (N4)}, align=left,] (fit) {\MoveFitHeight{8}};
+		\node[, dashed, inner sep=2pt, fit={(N4) (N4)}, align=right,] (fit) {\MoveFitHeight{16}};
+		\end{tikzpicture}
+		\caption{Prioridades, Envejecimiento T=2}
+		\label{gantt:Prioridades2}
+	\end{minipage}\hfill
+\end{figure}
+\end{frame}
+
+
+
+\end{document}

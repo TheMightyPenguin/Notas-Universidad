@@ -3,11 +3,11 @@
 ## To Do:
 - Sistemas Operativos
   - Tarea: Algoritmos de planificacion del procesador
-    - [ ] FCFS
-    - [ ] SJF
-    - [ ] SRTF
-    - [ ] Round Robin, Selfish RR
-    - [ ] Prioridades
+    - [x] FCFS
+    - [x] SJF
+    - [ ] SRTF (Parcialmente completo, falta ejemplo)
+    - [x] Round Robin, Selfish RR
+    - [x] Prioridades 
     - [ ] Colas Multinivel (MLQ)
     - [ ] Colas Multinivel con Retroalimentación
     - [ ] Sistemas de Tiempo Real
