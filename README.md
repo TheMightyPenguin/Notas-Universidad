@@ -2,22 +2,43 @@
 
 ## To Do:
 - Sistemas Operativos
-  - Tarea: Algoritmos de planificacion del procesador
+  - [x] Topico 1: Algoritmos de planificacion del procesador
     - [x] FCFS
     - [x] SJF
-    - [ ] SRTF (Parcialmente completo, falta ejemplo)
+    - [x] SRTF
     - [x] Round Robin, Selfish RR
     - [x] Prioridades 
-    - [ ] Colas Multinivel (MLQ)
-    - [ ] Colas Multinivel con Retroalimentación
-    - [ ] Sistemas de Tiempo Real
-    - [ ] Planificación para Linux
-    - [ ] Planificación para Windows
-    - [ ] Planificación en sistemas Multiprocesadores
-    - [ ] Planificación en Sistemas Multicore
-    - [ ] Planificación de hilos
-  - La explicacion de cada uno debe llevar
-    - Diagrama de Gantt
-    - Ventajas
-    - Desventajas
-    - Recursos que se necesitan para su implantación
+    - [x] Colas Multinivel (MLQ)
+    - [x] Colas Multinivel con Retroalimentación
+    - [x] Sistemas de Tiempo Real
+    - [x] Planificación para Linux
+    - [x] Planificación para Windows
+    - [x] Planificación en sistemas Multiprocesadores
+    - [x] Planificación en Sistemas Multicore
+    - [x] Planificación de hilos
+  - [x] Topico 2: Criterios para evaluar los algoritmos
+
+### Nota: 
+- La explicacion de cada uno debe llevar
+  - Diagrama de Gantt
+  - Ventajas
+  - Desventajas
+  - Recursos que se necesitan para su implantación
+
+### Presentacion:
+- Sistemas Operativos
+  - [x] Topico 1: Algoritmos de planificacion del procesador
+    - [x] FCFS
+    - [x] SJF
+    - [x] SRTF
+    - [x] Round Robin, Selfish RR
+    - [x] Prioridades 
+    - [x] Colas Multinivel (MLQ)
+    - [x] Colas Multinivel con Retroalimentación
+    - [x] Sistemas de Tiempo Real
+    - [x] Planificación para Linux
+    - [x] Planificación para Windows
+    - [x] Planificación en sistemas Multiprocesadores
+    - [x] Planificación en Sistemas Multicore
+    - [x] Planificación de hilos
+  - [x] Topico 2: Criterios para evaluar los algoritmos
