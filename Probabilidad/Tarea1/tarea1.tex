@@ -1,0 +1,125 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{courier}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage[document]{ragged2e}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+ % % % % % % % %
+
+\usemintedstyle{pastie}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%Custom commands
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily 24 Ceros}}}{00\dots00}}}
+
+\usepackage{anysize}
+\marginsize{2.54cm}{2.54cm}{2.54cm}{2.54cm}
+
+\usepackage{setspace}
+\onehalfspacing
+%\doublespacing
+
+\setlength{\columnsep}{1cm}
+
+%En caso de que LaTeX separe las palabras con - de manera incorrecta, usar
+%\hyphenation{deci-sión,e-xa-men, otras palabras....}
+
+\setlength{\columnseprule}{2pt}
+\def\columnseprulecolor{\color{black}}
+
+
+%--% Comandos personalizados %--%
+\newcommand{\bigO}[1]{$O({#1})$}
+
+\newcommand{\set}[1]{\left\{{#1}\right\}}
+
+
+%-------------------------------%
+
+\begin{document}
+
+\flushleft
+\setlength{\parindent}{20pt}
+
+\justify
+%%CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centerline{\huge Tarea 1 \textbf{Probabilidad}}
+\centerline{Victor Tortolero CI:24.569.609}  % Pon tu nombre y Cedula!
+\vspace{0.1cm}
+\hrule
+
+
+%--% Respuesta a %---------------------------------------------------------%
+\section*{a.1)Demuestre que $A \cap B = B \cap A$}
+
+Tenemos $\underbrace{A \cap B}_{L1} =\underbrace{ B \cap A}_{L2}$, partiremos de $L1$ para llegar a $L2$.
+
+\begin{align*}
+\text{Sea $x$ un elemento cualquiera:} \\
+x \in (A \cap B) & \Leftrightarrow x \in A \land x \in B & \text{Definición de la intersección} \\
+                 & \Leftrightarrow x \in B \land x \in A & \text{Conmutativa} \\
+                 & \Leftrightarrow x \in (B \cap A) & \text{Definición de la intersección}
+\end{align*}
+$\therefore$ de $L1$ llegamos a $L2$ aplicando leyes lógicas y propiedades de conjuntos, y
+	por lo tanto queda demostrado que $A \cap B = B \cap A$
+
+%-- -- -- -- -- --%
+
+\section*{a.2)Demuestre que $A \cup B = B \cup A$}
+	
+Tenemos $\underbrace{A \cup B}_{L1} =\underbrace{ B \cup A}_{L2}$, partiremos de $L1$ para llegar a $L2$.
+
+\begin{align*}
+\text{Sea $x$ un elemento cualquiera:} \\
+x \in (A \cup B) & \Leftrightarrow x \in A \lor x \in B & \text{Definición de la unión} \\
+                 & \Leftrightarrow x \in B \lor x \in A & \text{Conmutativa} \\
+                 & \Leftrightarrow x \in (B \cup A) & \text{Definición de la unión}
+\end{align*}
+$\therefore$ de $L1$ llegamos a $L2$ aplicando leyes lógicas y propiedades de conjuntos, y
+por lo tanto queda demostrado que $A \cup B = B \cup A$
+
+\newpage
+%--------------------------------------------------------------------------%	
+
+
+%--% Respuesta b %---------------------------------------------------------%
+\section*{b.1)Demuestre que $A \cup (B \cup C) = (A \cup B) \cup C$}
+
+Tenemos $\underbrace{A \cup (B \cup C)}_{L1} =\underbrace{(A \cup B) \cup C}_{L2}$, partiremos de $L1$ para llegar a $L2$.
+
+\begin{align*}
+\text{Sea $x$ un elemento cualquiera:} \\
+x \in (A \cup (B \cup C)) & \Leftrightarrow x \in A \lor x \in (B \cup C) & \text{Definición de la unión} \\
+                          & \Leftrightarrow x \in A \lor (x \in B \lor x \in C) & \text{Definicion de la unión} \\
+                          & \Leftrightarrow (x \in A \lor x \in B) \lor x \in C & \text{Asociatividad} \\
+                          & \Leftrightarrow x \in (A \cup B) \lor x \in C & \text{Definición de la unión} \\
+                          & \Leftrightarrow x \in ((A \cup B) \cup C) & \text{Definición de la unión} \\
+\end{align*}
+$\therefore$ de $L1$ llegamos a $L2$ aplicando leyes lógicas y propiedades de conjuntos, y
+por lo tanto queda demostrado que $A \cup (B \cup C) = (A \cup B) \cup C$
+
+%-- -- -- -- -- --%
+
+\newpage
+%--------------------------------------------------------------------------%	
+
+\end{document}

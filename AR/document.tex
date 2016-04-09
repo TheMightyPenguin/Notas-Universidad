@@ -1,0 +1,94 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% I, the copyright holder of this work, release this work into the
+%% public domain. This applies worldwide. In some countries this may
+%% not be legally possible; if so: I grant anyone the right to use
+%% this work for any purpose, without any conditions, unless such
+%% conditions are required by law.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% I, the copyright holder of this work, release this work into the
+%% public domain. This applies worldwide. In some countries this may
+%% not be legally possible; if so: I grant anyone the right to use
+%% this work for any purpose, without any conditions, unless such
+%% conditions are required by law.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer}
+% \usetheme[faculty=law]{fibeamer}
+%--% Paquetes %----------------------------------%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{courier}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{wrapfig,lipsum}
+%------------------------------------------------%
+
+\usepackage[
+main=spanish, %% By using `czech` or `slovak` as the main locale
+%% instead of `english`, you can typeset the
+%% presentation in either Czech or Slovak,
+%% respectively.
+czech, slovak %% The additional keys allow foreign texts to be
+]{babel}        %% typeset as follows:
+%%
+%%   \begin{otherlanguage}{czech}   ... \end{otherlanguage}
+%%   \begin{otherlanguage}{slovak}  ... \end{otherlanguage}
+%%
+%% These macros specify information about the presentation
+
+\title{Algoritmos de Planificación del Procesador}
+\subtitle{Presentation Subtitle} %% title page.
+\author{Victor Tortolero, 24.569.609}
+\institute{
+	Sistemas Operativos, FACYT
+}
+\date{\today}
+
+%% These additional packages are used within the document:
+\usepackage{ragged2e}  % `\justifying` text
+\usepackage{booktabs}  % Tables
+\usepackage{tabularx}
+\usepackage{tikz}      % Diagrams
+\usetikzlibrary{calc, shapes, backgrounds}
+\usepackage{amsmath, amssymb}
+\usepackage{url}       % `\url`s
+\usepackage{listings}  % Code listings
+\frenchspacing
+
+\begin{document}
+	\frame{\maketitle}
+	
+	\AtBeginSection[]{% Print an outline at the beginning of sections
+		\begin{frame}<beamer>
+			\frametitle{Outline for Section \thesection}
+			\tableofcontents[currentsection]
+		\end{frame}}
+		
+		% \setbeamertemplate{caption}{\raggedright\insertcaption\par}
+		
+		%--% FCSFS %---------------------------------------------------------------------%
+		\begin{frame}
+			\frametitle{\algTitle ¿Que es Realidad Aumentada?}
+			Se atiende a los procesos por orden de llegada, usando una cola. Es no apropiativo.
+			
+			\begin{itemize}
+				\item \textbf{Ventajas}
+				\begin{itemize}
+					\item Es fácil de entender e implementar.
+				\end{itemize}
+				\vspace{0.5cm}
+				
+				\item \textbf{Desventajas}
+				\begin{itemize}
+					\item Aunque normalmente es justo en como dedica tiempo de CPU a los procesos,
+					los procesos largos hacen esperar a los cortos.
+					\item El tiempo de espera es alto por lo que carece de rendimiento.
+				\end{itemize}
+			\end{itemize}
+		\end{frame}
+		%--------------------------------------------------------------------------------%
+	\end{document}
+\end{document}

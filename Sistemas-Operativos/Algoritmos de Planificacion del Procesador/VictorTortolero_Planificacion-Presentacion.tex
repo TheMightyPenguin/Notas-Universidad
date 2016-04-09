@@ -44,16 +44,14 @@
 
 \newcommand{\bigO}[1]{$O({#1})$}
 
-\usetheme{Antibes}
+\usetheme{Berlin}
 %\usecolortheme{beaver}
 
 %--% Personal Info %-----------------------------%
 \title{Algoritmos de Planificación del Procesador}
 \author{Victor Tortolero, 24.569.609}
 \institute{
-	Universidad de Carabobo \\
-	Facultad de Ciencia y Tecnología \\
-	Sistemas Operativos
+	Sistemas Operativos, FACYT
 }
 \date{\today}
 %------------------------------------------------%
@@ -64,7 +62,9 @@
 
 \begin{frame}
 	\titlepage
+
 \end{frame}
+\author{}
 
 
 %--% FCSFS %---------------------------------------------------------------------%
@@ -591,6 +591,22 @@ Estan los Soft Real-Time Systems y los Hard Real-Time Systems.
 \frametitle{Criterios para evaluar los algoritmos}
 
 \begin{itemize}
+\item \textbf{Utilización de CPU}: Mantener al CPU ocupado.
+
+\item \textbf{Rendimiento}: Cantidad de procesos completados por unidad de tiempo.
+
+\item \textbf{Tiempo de ejecución}: Intervalo que va desde el comienzo de la ejecución, hasta el instante en que se completa.
+
+\item \textbf{Tiempo de espera}: Es la suma es los periodos en espera en la cola de procesos listos.
+
+\item \textbf{Tiempo de respuesta}: Es el tiempo en que un proceso empieza a mandar datos.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evaluación de los algoritmos}
+
+\begin{itemize}
 	\item \textbf{Modelado determinista}:
 	\begin{itemize}
 		\item Evaluación analítica.
@@ -609,7 +625,7 @@ Estan los Soft Real-Time Systems y los Hard Real-Time Systems.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Criterios para evaluar los algoritmos}
+	\frametitle{Evaluación de los algoritmos}
 	
 	\begin{itemize}
 		\item \textbf{Simulación}:
