@@ -1,38 +1,35 @@
-from math import cos, sin, pi
+TOL = 10**-8
+MAX_ITERATIONS = 100
 
-class EquationSolver:
-	def __init__(self, function, derivative, tol, max_iterations=100):
-		self.function = function
-		self.derivative = derivative
-		self.tolerance = tol
-		self.max_iterations = max_iterations
-		
-	def newton(self, p0):
-		i = 1
-		print self.function(p0)
-		print self.derivative(p0)
-		while i < self.max_iterations:
-			p = float(p0) - self.function(p0) / self.derivative(p0)
-			if abs(p - p0) <= self.tolerance:
-				print "Final value: ", p
-				break
-			i += 1
+def newton(p0, function, derivative):
+	try:
+		for i in xrange(1, MAX_ITERATIONS + 1):
+			f_x = function(p0)
+			d_x = derivative(p0)
+			p = float(p0) - (f_x / d_x)
+			if abs(p - p0) < TOL:
+				print 'tardo %d iteraciones' % (i)
+				return p
 			p0 = p
+	except:
+		return float('nan')
+	return float('nan')
+	
+	
+def tabla_newton(p0, function, derivative):
+	print "i & x_{i} & f(x_{i}) & f'(x_{i})"
+	try:
+		for i in xrange(1, MAX_ITERATIONS + 1):
+			f_x = function(p0)
+			d_x = derivative(p0)
+			p = float(p0) - (f_x / d_x)
+			if abs(p - p0) < TOL:
+				print 'tardo %d iteraciones' % (i)
+				return p
+			p0 = p
+			print '%d & %.7f & %.7f & %.7f' % (i, p0, f_x, d_x)
+			#~ print p
+	except:
+		return float('nan')
+	return float('nan')
 
-def f(n):
-	return float(n) * n
-
-def d(n):
-	return float(2) * n
-
-def f1(x):
-	return cos((float(x)) - x
-
-def d1(x):
-	return -sin(float(x)) - 1
-
-if __name__ == '__main__':
-	p0 = pi / float(4)
-	solver = EquationSolver(f, d, 0.01)
-	solver = EquationSolver(f, d, 0.01)
-	solver.newton(0)

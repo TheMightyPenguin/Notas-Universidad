@@ -1,0 +1,12 @@
+2016-04-09 00:27:55 VET LOG:  no se pudo enlazar al socket IPv6: No error
+2016-04-09 00:27:55 VET HINT:  ¿Hay otro postmaster corriendo en el puerto 5432? Si no, aguarde unos segundos y reintente.
+2016-04-09 00:27:55 VET LOG:  no se pudo enlazar al socket IPv4: No error
+2016-04-09 00:27:55 VET HINT:  ¿Hay otro postmaster corriendo en el puerto 5432? Si no, aguarde unos segundos y reintente.
+2016-04-09 00:27:55 VET WARNING:  no se pudo crear el socket de escucha para «*»
+2016-04-09 00:27:55 VET FATAL:  no se pudo crear ningún socket TCP/IP
+2016-04-09 00:29:13 VET LOG:  redirigiendo la salida del registro al proceso recolector de registro
+2016-04-09 00:29:13 VET HINT:  La salida futura del registro aparecerá en el directorio «pg_log».
+2016-04-09 00:29:24 VET LOG:  redirigiendo la salida del registro al proceso recolector de registro
+2016-04-09 00:29:24 VET HINT:  La salida futura del registro aparecerá en el directorio «pg_log».
+2016-04-09 00:37:30 VET LOG:  redirigiendo la salida del registro al proceso recolector de registro
+2016-04-09 00:37:30 VET HINT:  La salida futura del registro aparecerá en el directorio «pg_log».

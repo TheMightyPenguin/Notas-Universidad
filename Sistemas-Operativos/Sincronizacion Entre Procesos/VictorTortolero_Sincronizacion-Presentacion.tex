@@ -1,0 +1,240 @@
+\documentclass{beamer}
+
+%--% Paquetes %----------------------------------%
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage[document]{ragged2e}
+\usepackage{multicol}
+\usepackage{pgfgantt}
+\usepackage{minted}
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath}
+\usepackage{wrapfig,lipsum,booktabs}
+%------------------------------------------------%
+
+% \usemintedstyle{emacs}
+
+\usetikzlibrary{positioning,fit,calc}
+
+\makeatletter
+\newcommand*{\MoveFitHeight}[1]{%
+	\pgfmathsetlengthmacro\fit@inner@sep{%
+		\pgfkeysvalueof{/pgf/inner xsep}%
+	}%
+	\pgfmathsetlengthmacro\fit@text@height{%
+		\tikz@text@height
+	}%
+	\kern-\fit@inner@sep\relax
+	\raisebox{\fit@text@height}[0pt][0pt]{#1}%
+}
+\makeatother
+
+\newcommand{\algTitle}{\textbf{Algoritmo}: }
+
+\newcommand{\bigO}[1]{$O({#1})$}
+
+\usetheme{Berlin}
+%\usecolortheme{beaver}
+
+%--% Personal Info %-----------------------------%
+\title{Algoritmos de Planificación del Procesador}
+\author{Victor Tortolero, 24.569.609}
+\institute{
+	Sistemas Operativos, FACYT
+}
+\date{\today}
+%------------------------------------------------%
+
+
+\begin{document}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\begin{frame}
+	\titlepage
+
+\end{frame}
+\author{ }
+
+
+%--% Primera version del algoritmo de Dekker %------------------------------------%
+\begin{frame}
+\frametitle{Primera version del algoritmo de Dekker}
+
+\begin{itemize}
+	\item Primer algoritmo en resolver la exclusión mutua.
+	\item Aplica la exclusión mutua de manera correcta, y la garantiza.
+	\item Usa variables para controlar que hilo se ejecutara.
+	\item Revisa constantemente si la sección critica esta disponible (spinlock, busy waiting),
+	lo que malgasta el tiempo del procesador.
+	\item Los procesos lentos atrasan a los rapidos.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ejemplo de la Primera version del algoritmo de Dekker}
+	\inputminted[
+		frame=lines,
+		framesep=2mm,
+		baselinestretch=1.1,
+		fontsize=\tiny,
+		linenos
+	]{c}{codigos/dekker1.c}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Segunda version del algoritmo de Dekker %-----------------------------------%
+\begin{frame}
+	\frametitle{Segunda version del algoritmo de Dekker}
+	
+	\begin{itemize}
+		\item Primer algoritmo en resolver la exclusión mutua.
+		\item Aplica la exclusión mutua de manera correcta.
+		\item Usa variables para controlar que hilo se ejecutara.
+		\item Revisa constantemente si la sección critica esta disponible (spinlock, busy waiting),
+		lo que malgasta el tiempo del procesador.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ejemplo de la Segunda version del algoritmo de Dekker}
+	\inputminted[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=0.95,
+	fontsize=\tiny,
+	linenos
+	]{c}{codigos/dekker2.c}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Tercera version del algoritmo de Dekker %-----------------------------------%
+\begin{frame}
+	\frametitle{Tercera version del algoritmo de Dekker}
+	
+	\begin{itemize}
+		\item Garantiza la exclusión mutua.
+		\item Es posible un deadlock (Ambos procesos encienden sus banderas simultáneamente, y ninguno saldría
+		del ciclo).
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ejemplo de la Tercera version del algoritmo de Dekker}
+	\inputminted[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=0.95,
+	fontsize=\tiny,
+	linenos
+	]{c}{codigos/dekker3.c}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Cuarta version del algoritmo de Dekker %-----------------------------------%
+\begin{frame}
+	\frametitle{Cuarta version del algoritmo de Dekker}
+	
+	\begin{itemize}
+		\item Es posible posponer un proceso de manera indefinida.
+		\item Apaga las banderas por cortos periodos de tiempo para tomar control.
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ejemplo de la Cuarta version del algoritmo de Dekker}
+	\inputminted[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=0.95,
+	fontsize=\tiny,
+	linenos
+	]{c}{codigos/dekker4.c}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Quinta version del algoritmo de Dekker %-----------------------------------%
+\begin{frame}
+	\frametitle{Quinta version del algoritmo de Dekker}
+	
+	\begin{itemize}
+		\item Marca procesos como preferidos para determinar el uso de las secciones criticas.
+		\item El estatus de ``Preferido'' se turna entre los procesos.
+		\item Garantiza la exclusión mutua.
+		\item Evita deadlock's, y el posponer un proceso de manera indefinida.
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Ejemplo de la Quinta version del algoritmo de Dekker}
+	\inputminted[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.1,
+	fontsize=\tiny,
+	linenos
+	]{c}{codigos/dekker5.c}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Test and Set %-----------------------------------%
+\begin{frame}
+	\frametitle{Test and Set}
+	
+	\begin{itemize}
+		\item Operación Atómica.
+		\item Retorna el valor del lock, y lo cambia a verdadero.
+		\item Si el valor retornado es \textbf{falso}, obtenemos el lock. Si es \textbf{verdadero}, 
+		esta ocupado por otro proceso.
+	\end{itemize}	
+	
+	\inputminted[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.0,
+	fontsize=\tiny,
+	linenos
+	]{c}{codigos/test_and_set.c}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Compare and Swap %-----------------------------------%
+\begin{frame}
+	\frametitle{Compare and Swap}
+	
+	\begin{itemize}
+		\item Operación Atómica.
+		\item Retorna el valor del lock, y lo cambia a verdadero.
+		\item Si el valor retornado es \textbf{falso}, obtenemos el lock. Si es \textbf{verdadero}, 
+		esta ocupado por otro proceso.
+	\end{itemize}	
+	
+	\inputminted[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.0,
+	fontsize=\tiny,
+	linenos
+	]{c}{codigos/compare_and_swap.c}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+
+%--% Bibliografia %----------------------------------------------------------------------%
+\begin{frame}[allowframebreaks]
+	\frametitle{References}
+	\nocite{UoL, Silberschatz}
+	\bibliographystyle{amsalpha}
+	\bibliography{bibliography}
+\end{frame}
+\end{document}
