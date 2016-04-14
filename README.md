@@ -12,3 +12,4 @@ Contraseña:             |
 - Comandos:
   - `\dn` Muestra los esquemas
   - `\l` Muestra las bases de datos
+  - `\d t.*` Muestra todas las tablas del esquema t
