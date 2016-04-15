@@ -1,7 +1,6 @@
 bool p1_quiere_entrar = false;
 bool p2_quiere_entrar = false;
 iniciar_procesos(); // inicializa y corre ambos procesos
-
 proceso p1:
 void main(){
 	while(!no_terminado){
@@ -12,11 +11,10 @@ void main(){
 			p1_quiere_entrar = true;
 		}
 		// seccion critica
-		p1_quiere_entrar = false; // seccion de entrada
+		p1_quiere_entrar = false; // seccion de salida
 		// codigo restante
 	}
 } // fin del proceso p1
-
 proceso p2:
 void main(){
 	while(!no_terminado){
@@ -27,7 +25,7 @@ void main(){
 			p2_quiere_entrar = true;
 		}
 		// seccion critica
-		p2_quiere_entrar = false; // seccion de entrada
+		p2_quiere_entrar = false; // seccion de salida
 		// codigo restante
 	}
 } // fin del proceso p2

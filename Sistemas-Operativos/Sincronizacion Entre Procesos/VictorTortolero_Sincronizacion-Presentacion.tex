@@ -41,6 +41,7 @@
 \makeatother
 
 \newcommand{\algTitle}{\textbf{Algoritmo}: }
+\newcommand{\problemasTitle}{\textbf{Problemas Clasicos}: }
 
 \newcommand{\bigO}[1]{$O({#1})$}
 
@@ -77,17 +78,19 @@
 	\item Usa variables para controlar que hilo se ejecutara.
 	\item Revisa constantemente si la sección critica esta disponible (spinlock, busy waiting),
 	lo que malgasta el tiempo del procesador.
-	\item Los procesos lentos atrasan a los rapidos.
+	\item Los procesos lentos atrasan a los rápidos.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Ejemplo de la Primera version del algoritmo de Dekker}
+	\frametitle{Primera version del algoritmo de Dekker}
 	\inputminted[
 		frame=lines,
 		framesep=2mm,
 		baselinestretch=1.1,
 		fontsize=\tiny,
+		tabsize=4,
+		obeytabs,
 		linenos
 	]{c}{codigos/dekker1.c}
 \end{frame}
@@ -97,22 +100,21 @@
 \begin{frame}
 	\frametitle{Segunda version del algoritmo de Dekker}
 	
-	\begin{itemize}
-		\item Primer algoritmo en resolver la exclusión mutua.
-		\item Aplica la exclusión mutua de manera correcta.
-		\item Usa variables para controlar que hilo se ejecutara.
-		\item Revisa constantemente si la sección critica esta disponible (spinlock, busy waiting),
-		lo que malgasta el tiempo del procesador.
+	\begin{itemize}		
+		\item No garantiza la exclusión mutua.
+		\item Ambos procesos pueden entrar al mismo tiempo en su sección critica
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Ejemplo de la Segunda version del algoritmo de Dekker}
+	\frametitle{Segunda version del algoritmo de Dekker}
 	\inputminted[
 	frame=lines,
 	framesep=2mm,
 	baselinestretch=0.95,
 	fontsize=\tiny,
+	tabsize=4,
+	obeytabs,
 	linenos
 	]{c}{codigos/dekker2.c}
 \end{frame}
@@ -124,18 +126,20 @@
 	
 	\begin{itemize}
 		\item Garantiza la exclusión mutua.
-		\item Es posible un deadlock (Ambos procesos encienden sus banderas simultáneamente, y ninguno saldría
-		del ciclo).
+		\item Es posible que ocurra un deadlock.
+		
 	\end{itemize}	
 \end{frame}
 
 \begin{frame}
-	\frametitle{Ejemplo de la Tercera version del algoritmo de Dekker}
+	\frametitle{Tercera version del algoritmo de Dekker}
 	\inputminted[
 	frame=lines,
 	framesep=2mm,
 	baselinestretch=0.95,
 	fontsize=\tiny,
+	tabsize=4,
+	obeytabs,
 	linenos
 	]{c}{codigos/dekker3.c}
 \end{frame}
@@ -148,16 +152,18 @@
 	\begin{itemize}
 		\item Es posible posponer un proceso de manera indefinida.
 		\item Apaga las banderas por cortos periodos de tiempo para tomar control.
-	\end{itemize}	
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Ejemplo de la Cuarta version del algoritmo de Dekker}
+	\frametitle{Cuarta version del algoritmo de Dekker}
 	\inputminted[
 	frame=lines,
 	framesep=2mm,
-	baselinestretch=0.95,
+	baselinestretch=0.85,
 	fontsize=\tiny,
+	tabsize=4,
+	obeytabs,
 	linenos
 	]{c}{codigos/dekker4.c}
 \end{frame}
@@ -168,22 +174,50 @@
 	\frametitle{Quinta version del algoritmo de Dekker}
 	
 	\begin{itemize}
+		\item Garantiza la exclusión mutua.
 		\item Marca procesos como preferidos para determinar el uso de las secciones criticas.
 		\item El estatus de ``Preferido'' se turna entre los procesos.
-		\item Garantiza la exclusión mutua.
 		\item Evita deadlock's, y el posponer un proceso de manera indefinida.
 	\end{itemize}	
 \end{frame}
 
 \begin{frame}[allowframebreaks]
-	\frametitle{Ejemplo de la Quinta version del algoritmo de Dekker}
+	\frametitle{Quinta version del algoritmo de Dekker}
 	\inputminted[
 	frame=lines,
 	framesep=2mm,
 	baselinestretch=1.1,
 	fontsize=\tiny,
+	tabsize=4,
+	obeytabs,
 	linenos
 	]{c}{codigos/dekker5.c}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Peterson %-----------------------------------%
+\begin{frame}
+	\frametitle{Algoritmo de Peterson}
+	
+	\begin{itemize}
+		\item Garantiza la exclusión mutua.
+		\item Cada proceso tendra su turno.
+		\item Requiere que los 2 procesos conpartan 2 variables:
+		\textbf{int} turn; \textbf{boolean} flag[2];
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Quinta version del algoritmo de Dekker}
+	\inputminted[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.1,
+	fontsize=\tiny,
+	tabsize=4,
+	obeytabs,
+	linenos
+	]{c}{codigos/peterson.c}
 \end{frame}
 %--------------------------------------------------------------------------------%
 
@@ -202,7 +236,9 @@
 	frame=lines,
 	framesep=2mm,
 	baselinestretch=1.0,
-	fontsize=\tiny,
+	fontsize=\scriptsize,
+	tabsize=4,
+	obeytabs,
 	linenos
 	]{c}{codigos/test_and_set.c}
 \end{frame}
@@ -214,26 +250,192 @@
 	
 	\begin{itemize}
 		\item Operación Atómica.
-		\item Retorna el valor del lock, y lo cambia a verdadero.
-		\item Si el valor retornado es \textbf{falso}, obtenemos el lock. Si es \textbf{verdadero}, 
-		esta ocupado por otro proceso.
+		\item Retorna el valor original de value.
+		\item Cambia el valor de la variable value si es igual al valor de expected.
 	\end{itemize}	
 	
 	\inputminted[
 	frame=lines,
 	framesep=2mm,
 	baselinestretch=1.0,
-	fontsize=\tiny,
+	fontsize=\scriptsize,
+	tabsize=4,
+	obeytabs,
 	linenos
 	]{c}{codigos/compare_and_swap.c}
 \end{frame}
 %--------------------------------------------------------------------------------%
 
+%--% Problemas Clasicos %------------------------------------------%
+%--% Productor y Consumidor %-----------------------------------%
+\begin{frame}
+	\frametitle{\problemasTitle Productor y Consumidor}
+	
+	\begin{itemize}
+		{\scriptsize
+			\item Los productores insertan elementos en el buffer. Los consumidores los extraen.
+			\item No se pueden insertar elementos en el buffer si esta lleno. No se pueden extraer si esta vació.
+			\item \textbf{Semaphore}: (binario)mutex = 1, (contador)empty = n, (contador)full = 0;
+		}
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\caption{Proceso Productor}
+			\inputminted[
+			frame=lines,
+			framesep=2mm,
+			baselinestretch=0.8,
+			fontsize=\tiny,
+			tabsize=4,
+			obeytabs,
+			]{c}{codigos/productor.c}
+			\label{algoritmos:productor}
+		\end{minipage}\hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\caption{Proceso Consumidor}
+			\inputminted[
+			frame=lines,
+			framesep=2mm,
+			baselinestretch=0.9,
+			fontsize=\tiny,
+			tabsize=4,
+			obeytabs,
+			]{c}{codigos/consumidor.c}
+			\label{algoritmos:consumidor}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Lectores y Escritores %-----------------------------------%
+\begin{frame}
+	\frametitle{\problemasTitle Lectores y Escritores}
+	
+	\begin{itemize}
+		{\scriptsize
+		\item Una base de datos que debe ser compartida por \textbf{lectores} y \textbf{escritores}.
+		\item Si dos lectores acceden de manera simultanea, no hay problemas.
+		\item Si un escritor y otro proceso (lector o escritor), acceden simultáneamente, puede traer problemas.
+		}
+	\end{itemize}
+	\begin{figure}[h]
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\caption{Proceso Lector}
+			\inputminted[
+			frame=lines,
+			framesep=2mm,
+			baselinestretch=0.8,
+			fontsize=\tiny,
+			tabsize=4,
+			obeytabs,
+			]{c}{codigos/lector.c}
+			\label{algoritmos:lector}
+		\end{minipage}\hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			
+			{\tiny 
+				\textbf{Semaphore}: (binario)rw\_mutex = 1, (binario)mutex = 1; \textbf{Int} read\_count = 0;
+			}
+			
+			\caption{Proceso Escritor}
+			\inputminted[
+			frame=lines,
+			framesep=2mm,
+			baselinestretch=0.9,
+			fontsize=\tiny,
+			tabsize=4,
+			obeytabs,
+			]{c}{codigos/escritor.c}
+			\label{algoritmos:escritor}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Barbero Dormilon %-----------------------------------%
+\begin{frame}
+	\frametitle{\problemasTitle Barbero Dormilon}
+	
+	\begin{itemize}
+		{\scriptsize
+		\item El barbero duerme si no hay clientes.
+		\item Si no hay sillas disponibles, el cliente se va. En caso contrario se sienta en una.
+		\item Si el cliente llega y el barbero esta dormido, lo despierta.
+		}
+	\end{itemize}
+	\begin{figure}[h]
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\caption{Proceso Cliente}
+			\inputminted[
+			frame=lines,
+			framesep=2mm,
+			baselinestretch=0.9,
+			fontsize=\tiny,
+			tabsize=4,
+			obeytabs,
+			]{c}{codigos/cliente.c}
+			\label{algoritmos:cliente}
+		\end{minipage} \hfill
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			
+			{\tiny
+			\textbf{Int:} sillas\_libres = N; \textbf{Semaphore:} sillon = 1, barbero = 0, fin = 0, mutex = 1, turn = 1;
+			}
+			
+			\caption{Proceso Barbero}
+			\inputminted[
+			frame=lines,
+			framesep=2mm,
+			baselinestretch=0.8,
+			fontsize=\tiny,
+			tabsize=4,
+			obeytabs,
+			]{c}{codigos/barbero.c}
+			\label{algoritmos:barbero}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+%--% Filósofos Comensales %-----------------------------------%
+\begin{frame}
+	\frametitle{\problemasTitle Filósofos Comensales}
+	
+	\begin{itemize}
+		{\scriptsize
+			\item Cuando un filosofo tiene hambre, intenta acceder a los palillos de su izquierda y derecha.
+			\item Un filosofo necesita ambos palillos para comer.
+			\item Un filósofo no puede quitarle un palillo a otro filósofo.
+			\item \textbf{Semaphore}: palillos[5] = 0, sirviente = 1;
+		}
+	\end{itemize}
+	
+	\inputminted[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=0.9,
+	fontsize=\tiny,
+	tabsize=4,
+	obeytabs,
+	]{c}{codigos/filosofos.c}
+	\label{algoritmos:filosofos}
+\end{frame}
+%--------------------------------------------------------------------------------%
+
+
+
 
 %--% Bibliografia %----------------------------------------------------------------------%
 \begin{frame}[allowframebreaks]
 	\frametitle{References}
-	\nocite{UoL, Silberschatz}
+	\nocite{UoL, Silberschatz, pctr, CECS}
 	\bibliographystyle{amsalpha}
 	\bibliography{bibliography}
 \end{frame}
