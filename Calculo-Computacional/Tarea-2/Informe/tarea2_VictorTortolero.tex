@@ -8,12 +8,16 @@
 \usepackage{pdfpages}
 \usepackage{hyperref}
 \usepackage{courier}
+\usepackage{capt-of}
+\usepackage{float}
 \usepackage{longtable}
+\usepackage{standalone}
 \usepackage{listings}
 \usepackage{minted}
 \usepackage{xcolor}
 \usepackage{blindtext}
 \usepackage{scrextend}
+\usepackage{pgfplots}
 \usepackage[document]{ragged2e}
 \usepackage{multicol}
 \usepackage{booktabs}
@@ -21,6 +25,8 @@
  % % % % % % % %
 
 \usemintedstyle{pastie}
+
+\decimalpoint
 
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -45,8 +51,12 @@
 \setlength{\columnseprule}{2pt}
 \def\columnseprulecolor{\color{black}}
 
+\newcommand{\converge}{(Converge)}
+\newcommand{\diverge}{(Diverge)}
+\newcommand{\function}[2]{
+	#1 \left( #2 \right)
+}
 
-% Aqui comienza el documento como tal!!
 \begin{document}
 
 \flushleft
@@ -61,28 +71,38 @@
 
 %--% Respuesta 1 %--------------------------------------------------%
 \section*{Respuesta 1}
-asd
+\input{respuesta1}
+\newpage
 %-------------------------------------------------------------------%
 
+%--% Respuesta 2 %--------------------------------------------------%
+\section*{Respuesta 2}
+\input{respuesta2}
+\newpage
+%-------------------------------------------------------------------%
 
-%--%FIN CUERPO PRINCIPAl %------------------------------------------%
+%--% Respuesta 3 %--------------------------------------------------%
+\section*{Respuesta 3}
+\input{respuesta3}
+\newpage
+%-------------------------------------------------------------------%
 
+%--% Respuesta 4 %--------------------------------------------------%
+\section*{Respuesta 4}
+\input{respuesta4}
+\newpage
+%-------------------------------------------------------------------%
 
+%--% Respuesta 5 %--------------------------------------------------%
+\section*{Respuesta 5}
+\input{respuesta5}
+\newpage
+%-------------------------------------------------------------------%
 
-% Codigo Fuente %%%%%%%%%%%%%%%%%%%%%%%%
-%\newpage
-%\begin{centering}
-%	\section*{Código Fuente}
-%\end{centering}
+%--% Respuesta 6 %--------------------------------------------------%
+\section*{Respuesta 6}
+\input{respuesta6}
+%-------------------------------------------------------------------%
 
-%\section*{repuesta3.c}
-%\inputminted[
-%frame=lines,
-%framesep=2mm,
-%baselinestretch=1.2,
-%fontsize=\footnotesize,
-%linenos
-%]{c}{../Codigos/respuesta3.c}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}

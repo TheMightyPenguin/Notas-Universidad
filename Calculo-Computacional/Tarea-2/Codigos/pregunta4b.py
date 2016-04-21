@@ -7,4 +7,3 @@ def f(x):
 if __name__ == '__main__':
 	regula_falsi = metodos.regula_falsi(-1, 1, f)
 	print 'Converge a %.7f' % (regula_falsi)
-

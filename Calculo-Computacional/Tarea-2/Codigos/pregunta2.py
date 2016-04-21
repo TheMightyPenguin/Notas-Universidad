@@ -11,5 +11,5 @@ if __name__ == '__main__':
 	estimados = [pi/2, 5*pi, 10*pi]
 	for p0 in estimados:
 		print '-------------------------------------'
-		value = metodos.newton(p0, f, d)
-		print p0, ", Final Value: %.7f" % (value)
+		value, iteraciones = metodos.newton(p0, f, d)
+		print "Valor Final: %.7f, en %d iteraciones" % (value, iteraciones)
