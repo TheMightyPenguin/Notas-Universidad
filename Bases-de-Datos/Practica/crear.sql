@@ -20,7 +20,7 @@ CREATE TABLE t.jinete (
 );
 
 CREATE TABLE t.caballo (
-	ci_jinete t.tipo_cedula NOT NULL,
+	ci_jinete t.tipo_cedula NOT NULL UNIQUE,
 	nombre t.tipo_nombre NOT NULL,
 	PRIMARY KEY (ci_jinete, nombre),
 	FOREIGN KEY (ci_jinete) REFERENCES t.jinete
