@@ -3,7 +3,7 @@
 ## Tarea Sistemas Operativos
 
 ### Esto es para el Lunes 16
-- Algoritmos de remocion de memoria.
+- Algoritmos de remocion de memoria. HACER ESTO
 
 ### Investigar esto
 - Investigar reubicaciòn dinamica y reubicaciòn estatica. :computer: :pizza:
