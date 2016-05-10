@@ -1,6 +1,14 @@
 # Notas-Universidad :computer:
 
-## 
+## Tarea Sistemas Operativos
+
+### Esto es para el Lunes 16
+- Algoritmos de remocion de memoria.
+
+### Investigar esto
+- Investigar reubicaciòn dinamica y reubicaciòn estatica. :computer: :pizza:
+- Investigar que hace la MMU
+
 
 #### Detalles
 conexion: `psql -h laboratorios -U bd32 -d postgres`
