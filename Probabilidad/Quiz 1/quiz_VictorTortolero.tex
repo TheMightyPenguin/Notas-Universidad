@@ -1,0 +1,272 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{pdfpages}
+\usepackage[hidelinks]{hyperref}
+\usepackage{courier}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage[document]{ragged2e}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{amsmath}
+ % % % % % % % %
+
+\usemintedstyle{pastie}
+\decimalpoint
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%Custom commands
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily 24 Ceros}}}{00\dots00}}}
+
+\usepackage{anysize}
+\marginsize{2.54cm}{2.54cm}{2.54cm}{2.54cm}
+
+\usepackage{setspace}
+\onehalfspacing
+%\doublespacing
+
+\setlength{\columnsep}{1cm}
+
+%En caso de que LaTeX separe las palabras con - de manera incorrecta, usar
+%\hyphenation{deci-sión,e-xa-men, otras palabras....}
+
+\setlength{\columnseprule}{2pt}
+\def\columnseprulecolor{\color{black}}
+
+\newcommand{\prob}[1]{{P} \left( {#1} \right)}
+
+% Aqui comienza el documento como tal!!
+\begin{document}
+
+\flushleft
+\setlength{\parindent}{20pt}
+
+\justify
+%%CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centerline{\huge Quiz 1 \textbf{Probabilidad}}
+\centerline{Victor Tortolero CI:24.569.609}  % Pon tu nombre y Cedula!
+\vspace{0.1cm}
+\hrule
+
+%--% Respuesta 2.2 %-------------------------------------------%
+\section*{Pregunta 2.2}
+Con la definición 2.14 demuéstrese que para cualesquiera dos eventos, A y B, $\prob{A | B} + \prob{\overline{A} | B} = 1$ con tal
+que $\prob{B} \neq 0$.
+
+\textbf{R}: Primero procederemos a demostrar que:
+\begin{equation*} \label{eq:1}
+	\prob{\overline{A} | B} = 1 - \prob{A | B}
+\end{equation*}
+Para 2 eventos A y B de un espacio muestral $S$,
+tenemos que $S = A \cup \overline{A}$. Entonces:
+\begin{equation}\label{eq:2}
+	\prob{S | B} = 
+	\prob{(A \cup \overline{A}) | B} =
+	\prob{A | B} + \prob{\overline{A} | B}
+\end{equation}
+La intersección del espacio muestral con cualquier evento es igual al evento con el que se intersecta, entonces tenemos:
+\begin{equation}\label{eq:3}
+\prob{S | B} = 
+\frac{\prob{S \cap B}}{\prob{B}} =
+\frac{\prob{B}}{\prob{B}} =
+1
+\end{equation}
+Y si usamos este resultado obtenido en (\ref{eq:3}), en la ecuación (\ref{eq:2}), tenemos lo siguiente:
+\begin{align*}
+	\prob{S | B} & = \prob{A | B} + \prob{\overline{A} | B} = 1 \\
+	& \Rightarrow \prob{\overline{A} | B} = 1 - \prob{A | B}
+\end{align*}
+Ya con esto podemos demostrar que $\prob{A | B} + \prob{\overline{A} | B} = 1$. Entonces:
+\begin{align*}
+	\prob{A | B} + \prob{\overline{A} | B} = 
+	\prob{A | B} + 1 - \prob{A | B} = 1
+\end{align*}
+$\therefore$ Queda demostrado que $\prob{A | B} + \prob{\overline{A} | B} = 1$.
+%--------------------------------------------------------------%
+
+
+%--% Respuesta 2.11 %------------------------------------------%
+\newpage
+\section*{Pregunta 2.11}
+La probabilidad de que cierto componente eléctrico funcione es de 0.9. Un aparato contiene dos de éstos componentes.
+El aparato funcionará mientras lo haga, por lo menos, uno de los componentes.
+
+a) Sin importar cuál de los dos componentes funcione o no, ?`cuáles son los posibles resultados y sus respectivas probabilidades?
+(Puede suponerse independencia en la operación entre componentes).
+
+b)?`Cuál es la probabilidad de que el aparato funcione?
+
+\vspace{0.4cm}
+
+\textbf{R}: a) Tenemos cuatro posible resultados, y tomando en cuenta que $\prob{A} = 0.9$, $\prob{B} = 0.9$, $\prob{\overline{A}} = 0.1$
+y $\prob{\overline{B}} = 0.1$, entonces tenemos que:
+\begin{align*}
+\text{(Ambos funcionan)}    \ \ \ \  & \prob{A \cap B} = \prob{A} \prob{B} = 0.9 \times 0.9 = 1.8 \\
+\text{(Solo el A funciona)}	\ \ \ \  & \prob{A \cap \overline{B}} = \prob{A} \prob{\overline{B}} = 0.9 \times 0.1 = 0.09 \\
+\text{(Solo el B funciona)} \ \ \ \  & \prob{\overline{A} \cap B} = \prob{\overline{A}} \prob{B} = 0.1 \times 0.9 = 0.09 \\
+\text{(Ninguno funciona)}   \ \ \ \  & \prob{\overline{A} \cap \overline{B}} = \prob{\overline{A}} \prob{\overline{B}} = 0.1 \times 0.1 = 0.01
+\end{align*}
+
+b) El sistema funciona mientras uno de los componentes este funcionando, por lo tanto:
+\begin{equation*}
+	\prob{A \cup B} = \prob{A} + \prob{B} - \prob{A \cap B} = 0.9 + 0.9 - 1.8 = 0.99
+\end{equation*}
+%--------------------------------------------------------------%
+
+
+%--% Respuesta 2.13 %------------------------------------------%
+\newpage
+\section*{Pregunta 2.13}
+Una forma de incrementar la probabilidad de operación de un sistema (conocida como la confiabilidad del sistema),
+es mediante la introducción de una copia de los componentes en una configuración paralela. como se ilustra en la segunda parte
+de la figura 2.3. Supóngase que la Nasa desea una probabilidad no menor de $0.99999$, de que el transbordador espacial entre en órbita
+alrededor de la tierra, con éxito. ?`Cuántos motores cohete deben configurarse en paralelo para alcanzar esta confiabilidad de
+operación si se sabe que la probabilidad de que uno, cualquiera, de los motores funcione adecuadamente es de 0.95? Supóngase que los motores funcionan de manera independiente entre sí.
+
+\vspace{0.4cm}
+
+\textbf{R}: Tenemos los eventos $M_{i}$ ($1 \leq i \leq n$) y sabemos que la probabilidad para cualquiera de ellos es 0.95.
+Queremos encontrar el numero $n$ de motores para alcanzar la probabilidad deseada de que el sistema funcione. Entonces podemos decir que
+tenemos la probabilidad de la unión de todos los $M_{i}$ de para $i = 1$ hasta $n$, y tomando la propiedad de todo conjunto de que es igual al universo menos su complemento, tenemos que:
+\begin{equation*}
+	\prob{ \bigcup\limits_{i=1}^{n} M_{i} } = 1 - \prob{ \overline{ \bigcup\limits_{i=1}^{n} M_{i} } }
+\end{equation*}
+Entonces por el complemento de la unión, y como los eventos $M_{i}$ son estadisticamente independientes la probabilidad de su intersección
+puede escribirse como el producto de sus probabilidades marginales:
+\begin{equation*}
+1 - \prob{ \overline{ \bigcup\limits_{i=1}^{n} M_{i} } } = 
+\prob{ \bigcap\limits_{i=1}^{n} \overline{M_{i}} } = 
+1 - \prod_{i=1}^{n} \prob{ \overline{ M_{i} } }
+\end{equation*}
+Entonces teniendo en cuenta que $\prob{M} = 0.95$ entonces sabemos que $\prob{ \overline{M} } = 0.05$. Y tendríamos que:
+\begin{equation*}
+	1 - \prod_{i=1}^{n} \prob{ \overline{ M_{i} } } = 
+	1 - \prod_{i=1}^{n} 0.05 =
+	1 - 0.05^{n}
+\end{equation*}
+Entonces igualando a 0.99999, tenemos:
+\begin{equation*}
+	\prob{ \bigcup\limits_{i=1}^{n} M_{i} } = 1 - 0.05^{n} = 0.99999
+\end{equation*}
+Y desarrollando esto:
+\begin{align*}
+	1 - 0.05^{n} = 0.99999 & \Rightarrow 0.00001 = 0.05^{n} \\
+	& \Rightarrow \log{0.00001} = \log{0.05^{n}} \\
+	& \Rightarrow -5 = n \times \log{0.05} \\
+	& \Rightarrow n = \frac{-5}{\log{0.05}} \approx 3.8431
+\end{align*}
+Entonces redondeando tenemos que debemos usar $4$ motores para alcanzar la confiabilidad del sistema deseada.
+%--------------------------------------------------------------%
+
+
+%--% Respuesta 2.17 %------------------------------------------%
+\newpage
+\section*{Pregunta 2.17}
+Un inversionista está pensando en comprar un número muy grande de acciones de una compañía. La cotización de las acciones en la bolsa, durante los seis meses anteriores, es de gran interés para el inversionista. Con base en esta información, se observa que la cotización se relaciona con el producto nacional bruto. Si el PNB aumenta, la probabilidad de que el valor de las acciones aumente es de 0.8. Si el PNB es el mismo, la probabilidad de que las acciones aumenten su valor es de 0.2. Si el PNB disminuye, la probabilidad es de sólo 0. 1. Si para los siguientes seis meses se asignan las probabilidades 0.4, 0.3 y 0.3 a los eventos, el PNB aumenta, es el mismo y disminuye, respectivamente, determinar la probabilidad de que las acciones aumenten su valor en los próximos seis meses.
+
+\vspace{0.4cm}
+
+\textbf{R}: Tenemos 5 eventos las acciones aumentan (A), las acciones no aumentan (B), el PNB aumenta (C), el PNB es el mismo (D)
+y el PNB disminuye (E). Y la siguiente información:
+\begin{align*}
+& \prob{A | C} = 0.8 \\
+& \prob{A | D} = 0.2 \\
+& \prob{A | E} = 0.1 \\
+& \prob{C} = 0.4\\
+& \prob{D} = 0.3\\
+& \prob{E} = 0.3\\
+\end{align*}
+Con esto podemos calcular lo siguiente: 
+\begin{align*}
+& \prob{A \cap C} = \prob{C} \times \prob{A | C} = 0.4 * 0.8 = 0.32 \\
+& \prob{A \cap D} = \prob{D} \times \prob{A | D} = 0.3 * 0.2 = 0.06 \\
+& \prob{A \cap E} = \prob{E} \times \prob{A | E} = 0.3 * 0.1 = 0.03 \\
+\end{align*}
+
+Entonces podemos armar la siguiente tabla:
+
+\begin{table}[ht]
+	\begin{tabular}{|c|c|c|c|} \hline
+		                     & Acciones aumentan (A) & Acciones no aumentan (B) &  \\ \hline
+		PNB aumenta     (C)  & 0.32                  & 0.08   & 0.4 \\ 
+		PNB es el mismo (D)  & 0.06                  & 0.24   & 0.3 \\ 
+		PNB disminuye   (E)  & 0.03                  & 0.27   & 0.3 \\ \hline
+		                     & 0.41                  & 0.59   & 1  \\ \hline
+	\end{tabular}
+\end{table}
+
+\vspace{0.2cm}
+Queremos saber la probabilidad de que las acciones aumenten su valor en los proximos seis meses, queremos saber la probabilidad
+del evento A. Entonces:
+
+\begin{equation*}
+	\prob{A} = 0.32 + 0.06 + 0.03 = 0.41
+\end{equation*}
+
+%--------------------------------------------------------------%
+
+%--% Respuesta 2.18 %------------------------------------------%
+\newpage
+\section*{Pregunta 2.18}
+Con Base en varios estudios de una compañía ha clasificado, de acuerdo con la posibilidad de descubrir petróleo,
+las formaciones geológicas en tres tipos. La compañía pretende perforar un pozo en un determinado sitio, al que le asignan
+las probabilidades de 0.35, 0.40 y 0.25 para los tres tipos de formaciones respectivamente.
+De acuerdo con la experiencia, se sabe que el petróleo se encuentre en un 40\% de formaciones de tipo I,
+en un 20\% de formaciones del tipo II y en un 30\% de formaciones del tipo III. Si la compañía no descubre petróleo en ese lugar,
+determínese la probabilidad de que exista una formación del tipo II.
+
+\vspace{0.4cm}
+
+\textbf{R}: Tenemos 5 eventos, hay petroleo (A), no hay petroleo(B), la formación es de tipo I (C), la formación es de tipo II (D)
+y la formación es de tipo III (E). Y la siguiente información:
+\begin{align*}
+& \prob{A | C} = 0.4 \\
+& \prob{A | D} = 0.2 \\
+& \prob{A | E} = 0.3 \\
+& \prob{C} = 0.35 \\
+& \prob{D} = 0.40 \\
+& \prob{E} = 0.25 \\
+\end{align*}
+Con esto podemos calcular lo siguiente: 
+\begin{align*}
+& \prob{A \cap C} = \prob{C} \times \prob{A | C} = 0.35 * 0.4 = 0.13 \\
+& \prob{A \cap D} = \prob{D} \times \prob{A | D} = 0.40 * 0.2 = 0.08 \\
+& \prob{A \cap E} = \prob{E} \times \prob{A | E} = 0.25 * 0.3 = 0.075 \\
+\end{align*}
+
+Podemos armar la siguiente tabla:
+\begin{table}[ht]
+\begin{tabular}{|c|c|c|c|} \hline
+	             & Hay Petroleo (A)  & No Hay Petroleo (B) &  \\ \hline
+	Tipo I   (C) & 0.14          & 0.21  & 0.35 \\ 
+	Tipo II  (D) & 0.08          & 0.32  & 0.40 \\ 
+	Tipo III (E) & 0.075         & 0.175 & 0.25 \\ \hline
+	             & 0.295         & 0.705 & 1  \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{0.2cm}
+Y tenemos que queremos saber la probabilidad de que la formación sea del Tipo II si no se descubre petroleo. En
+otras palabras queremos saber la probabilidad condicional del evento D si ocurre el evento B. Entonces:
+
+\begin{equation*}
+	\prob{D | B} = \frac{\prob{D \cap B}}{\prob{B}} = \frac{0.32}{0.705} = 0.4539
+\end{equation*}
+%--------------------------------------------------------------%
+
+
+\end{document}
