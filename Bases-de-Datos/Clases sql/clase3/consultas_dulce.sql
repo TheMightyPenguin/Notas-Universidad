@@ -31,8 +31,13 @@ WHERE p.tipo = 'Chocolate';
 */
 
 /* Todos los productos ordenados por tipo ascendentemente*/
-
+/*
 SELECT p.tipo, p.productor
 FROM dulce.producto p
 ORDER BY (p.tipo) ASC;
+*/
+
+SELECT p.tipo, p.productor
+FROM dulce.producto p
+ORDER BY (p.tipo) ASC, p.precio DESC;
 
