@@ -5,6 +5,7 @@ insert into t.pieza values (2,'tuerca','azul',15.00,'Valencia');
 insert into t.pieza values (3,'tuerca','verde',10.00,'Caracas');
 insert into t.pieza values (4,'tuerca','verde',6.00,'Porlamar');
 insert into t.pieza values (5,'tuerca','verde',14.00,'Porlamar');
+insert into t.pieza values (6,'tuerca','verde',10.00,'Valencia');
 
 insert into t.precio values (1,1500.00,1325.00);
 insert into t.precio values (2,812.32,812.32);

@@ -212,7 +212,7 @@ La que tenga la etiqueta mas alta se eliminara al ocurrir un fallo de pagina. }
 	\begin{itemize}
 		\item Si $R = 1$ se actualiza el tiempo de ultimo uso con el tiempo virtual actual.
 		\item Si $R = 0 \land edad > \tau$ se sustituye.
-		\item Si $R = 0 \land edad \leq \tau$ se actualiza el tiempo de ultimo uso con el menor de los tiempos de ultimo uso.
+		\item Si $R = 0 \land edad \leq \tau$ se recuerda la pagina con el menor tiempo de ultimo uso.
 		\item Si se recorre toda la tabla sin encontrar una victima: 
 			\begin{itemize}
 				\item Se sustituye la mas antigua con $R = 0$.
