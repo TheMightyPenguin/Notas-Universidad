@@ -1,0 +1,44 @@
+% respuesta2.tex
+
+3. Normalice hasta la BCNF la siguiente relación. Debe justificar cada paso de normalización porque, en caso contrario, no se considerará correcta la respuesta.
+
+CONCIERTO(\underline{código\_cantante}, \underline{fecha\_presentación}, lugar, alias\_cantante, nacionalidad, nombre\_real, repertorio)
+
+En la relación CONCIERTO se dan las siguientes dependencias funcionales entre los atributos:
+
+(código\_cantante, fecha\_presentación) $\rightarrow$ lugar
+
+(código\_cantante, fecha\_presentación) $\rightarrow$ repertorio
+
+código\_cantante $\rightarrow$ alias\_cantante
+
+código\_cantante $\rightarrow$ nacionalidad
+
+código\_cantante $\rightarrow$ nombre\_real
+
+(alias\_cantante, nacionalidad) $\rightarrow$ nombre\_real
+
+lugar $\rightarrow$ repertorio
+
+
+\subsection*{1NF}
+Ya se encuentra en 1NF ya que todos los atributos de la relación contienen valores atómicos.
+
+
+\subsection*{2NF}
+Tenemos que alias\_cantante, nacionalidad y nombre\_real no dependen totalmente de la clave, por lo que procedemos a separar la relación, y tendríamos:
+
+Concierto(\underline{código\_cantante}, \underline{fecha\_presentación}, lugar, repertorio)
+
+Cantante(\underline{código\_cantante}, alias\_cantante, nacionalidad, nombre\_real)
+
+
+\subsection*{3NF}
+Tenemos que nombre\_real no depende solo de la clave primaria, por lo que:
+
+Concierto(\underline{código\_cantante}, \underline{fecha\_presentación}, lugar, repertorio)
+
+Cantante(\underline{código\_cantante}, alias\_cantante, nacionalidad)
+
+Nombre(\underline{alias\_cantante}, \underline{nacionalidad}, nombre\_cantante)
+
