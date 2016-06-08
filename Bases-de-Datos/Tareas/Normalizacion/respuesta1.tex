@@ -28,8 +28,7 @@ Ya se encuentra en 1NF ya que todos los atributos de la relación contienen valo
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.7]{img/1_1nf.png}
-	\caption{1era Forma Normal}
+	\includegraphics[scale=0.8]{img/1_1nf.png}
 \end{figure}
 
 \newpage
@@ -43,26 +42,62 @@ Produccion(\underline{v\#}, sembradio, año, calidad, region, pais)
 Nombres(\underline{cip}, nombrep)
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.52]{img/2nf_almacen.png} 
+	\centering 
+	\begin{overpic}[scale=0.56,]{img/2nf_almacen.png}
+		\put (35, 65) {\textbf{Almacen}}
+	\end{overpic}
 	\hspace{0.4cm} \vrule \hspace{0.4cm}
-	\includegraphics[scale=0.52]{img/2nf_produccion.png}
+	\begin{overpic}[scale=0.56,]{img/2nf_produccion.png}
+		\put (40, 65) {\textbf{Producción}}
+	\end{overpic}
 	\hspace{0.4cm} \vrule \hspace{0.4cm}
-	\includegraphics[scale=0.52]{img/2nf_nombres.png}
-	\caption{Almacen, Produccion y Nombres}
+	\begin{overpic}[scale=0.56,]{img/2nf_nombres.png}
+		\put (35, 35) {\textbf{Nombres}}
+	\end{overpic}
 \end{figure}
 
 
 \subsection*{3NF}
-Tenemos que calidad y pais no dependen solo de la clave primaria, por lo que:
+Tenemos que calidad y pais no dependen solo de la clave primaria y tienen dependencias funcionales transitivas, y esto viola la 3NF, por lo que pasamos estos atributos a otras relaciones:
 
 Almacen(\underline{v\#}, \underline{cip}, \underline{fecha}, cantidad)
 
 Produccion(\underline{v\#}, sembradio, año, región)
 
-Siembras(\underline{sembradio}, \underline{año}, calidad)
+Siembra(\underline{sembradio}, \underline{año}, calidad)
 
-Lugares(\underline{región}, país)
+Lugar(\underline{región}, país)
 
-Nombres(\underline{cip}, nombrep)
+Nombre(\underline{cip}, nombrep)
 
+\vspace{0.40cm}
+\begin{figure}[H]
+	\centering 
+	\begin{overpic}[scale=0.60,]{img/2nf_almacen.png}
+		\put (35, 65) {\textbf{Almacen}}
+	\end{overpic}
+	\hspace{0.4cm} \vrule \hspace{0.4cm}
+	\begin{overpic}[scale=0.60,]{img/1-3nf_produccion.png}
+		\put (40, 74) {\textbf{Producción}}
+	\end{overpic}
+	\hspace{0.4cm} \vrule \hspace{0.4cm}
+	\begin{overpic}[scale=0.56,]{img/1-3nf_siembra.png}
+		\put (35, 52) {\textbf{Siembra}}
+	\end{overpic}
+\end{figure}
+
+\hrule
+\vspace{0.40cm} 
+\begin{figure}[H]
+	\centering 
+	\begin{overpic}[scale=0.60,]{img/1-3nf_lugar.png}
+		\put (35, 30) {\textbf{Lugar}}
+	\end{overpic}
+	\hspace{0.4cm} \vrule \hspace{0.4cm}
+	\begin{overpic}[scale=0.60,]{img/2nf_nombres.png}
+		\put (40, 30) {\textbf{Nombre}}
+	\end{overpic}
+\end{figure}
+
+\subsection*{BCNF}
+Como ningún atributo no clave es determinante, tenemos que nuestras relaciones se encuentran en BCNF.

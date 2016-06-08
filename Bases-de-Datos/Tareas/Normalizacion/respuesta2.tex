@@ -24,6 +24,12 @@ lugar $\rightarrow$ repertorio
 \subsection*{1NF}
 Ya se encuentra en 1NF ya que todos los atributos de la relación contienen valores atómicos.
 
+\begin{figure}[H]
+	\centering
+	\begin{overpic}[scale=0.65]{img/2-1nf.png}
+		\put (60, 48) {\textbf{CONCIERTO}}
+	\end{overpic}
+\end{figure}
 
 \subsection*{2NF}
 Tenemos que alias\_cantante, nacionalidad y nombre\_real no dependen totalmente de la clave, por lo que procedemos a separar la relación, y tendríamos:
@@ -32,13 +38,53 @@ Concierto(\underline{código\_cantante}, \underline{fecha\_presentación}, lugar
 
 Cantante(\underline{código\_cantante}, alias\_cantante, nacionalidad, nombre\_real)
 
+\begin{figure}[H]
+	\centering
+	\begin{overpic}[scale=0.62,]{img/2-2nf_Concierto.png}
+		\put (35, 38) {\textbf{Concierto}}
+	\end{overpic}
+	\hspace{0.4cm} \vrule \hspace{0.4cm}
+	\begin{overpic}[scale=0.62,]{img/2-2nf_Cantante.png}
+		\put (20, 30) {\textbf{Cantante}}
+	\end{overpic}
+\end{figure}
 
 \subsection*{3NF}
-Tenemos que nombre\_real no depende solo de la clave primaria, por lo que:
+Tenemos que nombre\_real no depende solo de la clave primaria y tiene una dependencia funcional transitiva, y esto viola la 3NF, por lo que crearemos una nueva relación para resolver esto:
 
-Concierto(\underline{código\_cantante}, \underline{fecha\_presentación}, lugar, repertorio)
+Concierto(\underline{código\_cantante}, \underline{fecha\_presentación}, lugar)
 
 Cantante(\underline{código\_cantante}, alias\_cantante, nacionalidad)
 
-Nombre(\underline{alias\_cantante}, \underline{nacionalidad}, nombre\_cantante)
+Nombre(\underline{alias\_cantante}, \underline{nacionalidad}, nombre\_real)
 
+Cancion(\underline{lugar}, repertorio)
+
+\vspace{0.35cm}
+\begin{figure}[H]
+	\centering
+	\begin{overpic}[scale=0.63,]{img/2-3nf_Concierto.png}
+		\put (33, 40) {\textbf{Concierto}}
+	\end{overpic}
+	\hspace{0.4cm} \vrule \hspace{0.4cm}
+	\begin{overpic}[scale=0.63,]{img/2-3nf_Cantante.png}
+		\put (20, 30) {\textbf{Cantante}}
+	\end{overpic}
+\end{figure}
+
+\hrule \vspace{0.2cm}
+
+\begin{figure}[H]
+	\centering	
+	\begin{overpic}[scale=0.63,]{img/2-3nf_Nombre.png}
+		\put (20, 35) {\textbf{Nombre}}
+	\end{overpic}
+	\hspace{0.4cm} \vrule \hspace{0.4cm}
+	\begin{overpic}[scale=0.63,]{img/2-3nf_Cancion.png}
+		\put (20, 35) {\textbf{Cancion}}
+	\end{overpic}
+\end{figure}
+
+
+\subsection*{BCNF}
+Como ningún atributo no clave es determinante, tenemos que nuestras relaciones se encuentran en BCNF.

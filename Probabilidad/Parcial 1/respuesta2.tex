@@ -1,0 +1,29 @@
+% Pregunta 2
+
+\section*{Pregunta 2}
+
+Los jugadores A y B apuestan cara o cruz, tirando una moneda. El jugador que primero llega a cinco puntos gana la apuesta. El juego se interrumpe en un momento en que A tiene 4 puntos y B tiene 3 puntos. ?`Como deben repartir la cantidad apostada para ser justos?
+
+\vspace{0.40cm}
+\textbf{R}: Tendríamos el siguiente diagrama que indica que pasaría si A y B continúan su partida:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{img/imagen1.png}
+\end{figure}
+
+Entonces, podemos definir los siguientes eventos:
+\begin{align*}
+	& D: \text{A obtiene un punto} \hspace{1cm} C: \text{B obtiene un punto} \hspace{1cm} E: \text{A gana} \hspace{1cm} F: \text{B Gana}
+\end{align*}
+Entonces tenemos que:
+\begin{align*}
+	& \prob{E} = \prob{A} + \prob{A | B} = 
+	\frac{1}{2} + \left( \frac{1}{2} \times \frac{1}{2} \right) = \frac{3}{4}
+	= 0.75 \\
+	& \prob{F} = \prob{B | B} = \frac{1}{2} \times \frac{1}{2}
+	= 0.25
+\end{align*}
+Por lo tanto, para ser justos deberíamos darle un $75\%$ de la cantidad al jugador A y un $25\%$ al jugador B.
+
+
