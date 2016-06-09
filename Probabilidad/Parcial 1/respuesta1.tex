@@ -2,14 +2,38 @@
 
 \section*{Pregunta 1}
 
-1.a Queremos calcular la probabilidad de obtener al menos un 6 en 4 lanzamientos de un dado de 6 caras, nuestro espacio muestral $S$ serian todas las posibles permutaciones al lanzar 4 veces un dado de 6 caras, y estamos interesados en el evento $A$, que es obtener al menos un 6 al lanzar 4 veces un dado de seis caras, entonces tenemos que:
+El Caballero De Meré sabía que era ventajoso apostar por el resultado de obtener al menos un seis en una serie de 4 lanzamientos de un dado. Entonces De Meré argumentó que debiera ser igualmente ventajoso apostar por el resultado de obtener al menos un doble seis en una serie de 24 lanzamientos con un par de dados. Para ello había razonado “por regla de tres”: si en 4 lanzamientos se apuesta por un resultado específico entre 6 posibles, es lo mismo que si en 24 lanzamientos se apuesta por un resultado específico entre 36 posibles, ya que 6 : 4 = 36 : 24.
+
+\vspace{0.40cm}
+\textbf{(a)} Calcule la probabilidad de obtener al menos un seis en una serie de 4 lanzamientos
+
+\textbf{R}: Definimos el siguiente evento:
 \begin{align*}
-	\#S = 6^4 = 1296
+	A: \text{obtener al menos un 6 en 4 lanzamientos de un dado de 6 cara}
 \end{align*}
-Luego para calcular $\prob{A}$, necesitamos saber cuantos elementos contiene $A$, y para esto podemos restarle a la cantidad de elementos totales en el caso que tuvieramos un dado de 5 caras y lo lanzáramos 4 veces, entonces:
+Para calcular $\prob{A}$, podemos usar su complemento, que seria $\overline{A}:$ no obtener ningún 6 en 4 lanzamientos. Con esto entonces:
 \begin{align*}
-	\prob{A} = \frac{1296 - 54}{1296} \approx 0.5177 = 51\%
+	\prob{A} = 1 - \prob{\overline{A}} = 1 - \frac{5^4}{6^4} \approx 0.5177
 \end{align*}
+Entonces tenemos que la probabilidad seria de $51.77\%$
 
 
-1.b Queremos calcular la probabilidad de obtener un doble seis en una seria de 24 lanzamientos de un dado de 6 caras,
+\vspace{0.60cm}
+\textbf{(b)} Calcule la probabilidad de obtener al menos un doble seis en una serie de 24 lanzamientos de un par de dados.
+
+\textbf{R}: Definimos el siguiente evento:
+\begin{align*}
+A: \text{obtener al menos un doble 6 en 24 lanzamientos de dos dado de 6 cara}
+\end{align*}
+Podemos aplicar lo mismo que en el caso anterior, tenemos que en este caso de las 36 posibles combinaciones al lanzar dos dados, nos interesa 1 y despreciamos la otras 35, entonces:
+\begin{align*}
+\prob{A} = 1 - \prob{\overline{A}} = 1 - \frac{35^24}{36^24} \approx 0.4914
+\end{align*}
+Entonces tenemos que la probabilidad seria de $49.14\%$
+
+
+\vspace{0.60cm}
+\textbf{(c)} En base a los resultados anteriores ?`Está de acuerdo con el argumento del Caballero de Meré?
+
+\textbf{R}: No, ya que como vemos obtenemos probabilidades distintas, y por lo tanto no es igualmente ventajoso apostar por obtener al menos un 6 en 4 lanzamientos de un dado de 6 cara
+a apostar por obtener al menos un doble 6 en 24 lanzamientos de dos dados de 6 caras.

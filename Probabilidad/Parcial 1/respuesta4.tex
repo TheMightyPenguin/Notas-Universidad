@@ -1,0 +1,20 @@
+% Pregunta 4
+
+\section*{Pregunta 4}
+
+Una aseguradora tiene clientes de riesgo alto, medio y bajo. Estos clientes tienen probabilidades de 0.02, 0.01 y 0.0025 de rellenar un impreso de reclamación. Si la proporción de clientes de alto riesgo es 0.1, de riesgo medio 0.2 y de bajo riesgo 0.7. ?`Cuál es la probabilidad de que un impreso rellenado sea de un cliente de alto riesgo?
+
+\vspace{0.40cm}
+\textbf{R}: Definimos los siguientes eventos:
+\begin{align*}
+& A: \text{es cliente de alto riesgo} \hspace{0.7cm} B: \text{es cliente de medio riesgo} \hspace{0.7cm} C: \text{es cliente de bajo riesgo} \\
+& D: \text{el cliente rellena un impreso de reclamacion}
+\end{align*}
+Entonces, por el teorema de Bayes podemos calcular la probabilidad de que un impreso rellanado sea de un cliente de alto riesgo.
+\begin{align*}
+	\prob{A | D} & = \frac{\prob{A} \prob{D | A}}{\prob{A} \prob{D | A} 
+	+ \prob{B} \prob{D | B} + \prob{C} \prob{D | C}} \\
+	& = \frac{(0.1)(0.02)}{(0.1)(0.02) + (0.2)(0.01) + (0.7)(0.0025)}\\
+	& \approx 0.3478 
+\end{align*}
+Entonces, la probabilidad condicional de que un cliente sea de alto riesgo si relleno un impreso de reclamo, es de $34.78\%$.
