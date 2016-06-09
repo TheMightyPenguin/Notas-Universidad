@@ -37,7 +37,13 @@ FROM dulce.producto p
 ORDER BY (p.tipo) ASC;
 */
 
+/*
 SELECT p.tipo, p.productor
 FROM dulce.producto p
 ORDER BY (p.tipo) ASC, p.precio DESC;
+*/
 
+SELECT F.codigo,F.nombre, MIN(P.precio)
+FROM dulce.producto AS P
+ JOIN dulce.Fabricante AS F ON F.codigo = P.productor
+GROUP BY F.codigo, F.nombre;
