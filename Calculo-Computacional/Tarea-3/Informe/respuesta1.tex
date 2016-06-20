@@ -1,156 +1,54 @@
 % respuesta1.tex
 
-Al correr el programa, que calcula el resultado del método de Newton en para hallar raíces de la función:
-
+Al correr el programa, que calcula el método de diferencias divididas de newton para interpolar la función:
 \begin{equation*}
-	f(t) = 1 - \dfrac{3}{2} * e^{(-1 * (t*t - 2*t + 0.9775))} - e^{(-1 * (t*t - 8*t + 15.96))}
+	f(x) = \frac{1}{1 + (\frac{5x}{10})^2}
 \end{equation*}
-con los siguientes puntos iniciales:
-\begin{equation*}
-[0.80, 0.85, 0.90, 0.95, 1.00, 1.05, 1.10, 1.15, 1.20]
-\end{equation*}
-obtenemos la siguiente información: 
+En el intervalo de $[-10, 10]$, con 5, 8 y 11 nodos igualmente espaciados, se obtuvieron los siguientes coeficientes:
 
+Para $n = 4$ se obtiene el siguiente polinomio:
+\begin{dmath}
+P_0(x) = 0.03846154 +0.01989390 * (x +10.00000000 ) +0.01525199 * (x +10.00000000 ) * (x +5.00000000 ) -0.00331565 * (x +10.00000000 ) * (x +5.00000000 ) * (x -0.00000000 ) +0.00033156 * (x +10.00000000 ) * (x +5.00000000 ) * (x -0.00000000 ) * (x -5.00000000 )
+\end{dmath}
+La grafica de $P_0(x)$:
 \begin{figure}[H]
 	\centering
-	\caption{Punto inicial: 0.80}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $0.8000000$ & $-0.4740155$ & $-0.5898284$ \\ \hline
-		$1$ & $-0.0036499$ & $0.4397364$ & $-1.1246161$ \\ \hline
-		$2$ & $0.3873603$ & $-0.0540499$ & $-1.2915172$ \\ \hline
-		$3$ & $0.3455103$ & $0.0003899$ & $-1.3084770$ \\ \hline
-		$4$ & $0.3458083$ & $0.0000000$ & $-1.3083914$ \\ \hline
-	\end{tabular}
+	\includegraphics[scale=0.18]{img/1_4.png}
 \end{figure}
+Y la grafica de $f(x) - P_0(x)$:
 \begin{figure}[H]
 	\centering
-	\caption{Punto inicial: 0.85}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $0.8500000$ & $-0.5000511$ & $-0.4503210$ \\ \hline
-		$1$ & $-0.2604324$ & $0.6867409$ & $-0.7896827$ \\ \hline
-		$2$ & $0.6092092$ & $-0.3168673$ & $-1.0293012$ \\ \hline
-		$3$ & $0.3013622$ & $0.0583564$ & $-1.3157409$ \\ \hline
-		$4$ & $0.3457147$ & $0.0001225$ & $-1.3084183$ \\ \hline
-		$5$ & $0.3458083$ & $0.0000000$ & $-1.3083914$ \\ \hline
-	\end{tabular}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\caption{Punto inicial: 0.90}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $0.9000000$ & $-0.5189375$ & $-0.3042058$ \\ \hline
-		$1$ & $-0.8058763$ & $0.9411771$ & $-0.2124534$ \\ \hline
-		$2$ & $3.6241634$ & $0.0947282$ & $-0.6710567$ \\ \hline
-		$3$ & $3.7653262$ & $0.0142263$ & $-0.4582679$ \\ \hline
-		$4$ & $3.7963698$ & $0.0008478$ & $-0.4032092$ \\ \hline
-		$5$ & $3.7984726$ & $0.0000040$ & $-0.3993906$ \\ \hline
-		$6$ & $3.7984826$ & $0.0000000$ & $-0.3993724$ \\ \hline
-	\end{tabular}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\caption{Punto inicial: 0.95}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $0.9500000$ & $-0.5303969$ & $-0.1536090$ \\ \hline
-		$1$ & $-2.5029032$ & $0.9999928$ & $-0.0000504$ \\ \hline
-	\end{tabular}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\caption{Punto inicial: 1.00}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $1.0000000$ & $-0.5342610$ & $-0.0007707$ \\ \hline
-	\end{tabular}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\caption{Punto inicial: 1.05}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $1.0500000$ & $-0.5304750$ & $0.1520096$ \\ \hline
-		$1$ & $4.5397473$ & $0.2222265$ & $0.8396434$ \\ \hline
-		$2$ & $4.2750795$ & $0.0350064$ & $0.5311111$ \\ \hline
-		$3$ & $4.2091679$ & $0.0036925$ & $0.4171101$ \\ \hline
-		$4$ & $4.2003153$ & $0.0000715$ & $0.4009391$ \\ \hline
-		$5$ & $4.2001369$ & $0.0000000$ & $0.4006113$ \\ \hline
-		$6$ & $4.2001368$ & $0.0000000$ & $0.4006112$ \\ \hline
-	\end{tabular}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\caption{Punto inicial: 1.10}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $1.1000000$ & $-0.5190994$ & $0.3024291$ \\ \hline
-		$1$ & $2.8164331$ & $0.6869363$ & $-0.4013668$ \\ \hline
-		$2$ & $4.5279259$ & $0.2123474$ & $0.8316886$ \\ \hline
-		$3$ & $4.2726052$ & $0.0336973$ & $0.5270527$ \\ \hline
-		$4$ & $4.2086698$ & $0.0034850$ & $0.4162053$ \\ \hline
-		$5$ & $4.2002966$ & $0.0000640$ & $0.4009047$ \\ \hline
-		$6$ & $4.2001369$ & $0.0000000$ & $0.4006113$ \\ \hline
-		$7$ & $4.2001368$ & $0.0000000$ & $0.4006112$ \\ \hline
-	\end{tabular}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\caption{Punto inicial: 1.15}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $1.1500000$ & $-0.5003089$ & $0.4482386$ \\ \hline
-		$1$ & $2.2661664$ & $0.6397468$ & $0.6032816$ \\ \hline
-		$2$ & $1.2057216$ & $-0.4709837$ & $0.6026869$ \\ \hline
-		$3$ & $1.9871949$ & $0.4029704$ & $1.0701177$ \\ \hline
-		$4$ & $1.6106285$ & $-0.0600950$ & $1.2739408$ \\ \hline
-		$5$ & $1.6578011$ & $0.0004120$ & $1.2891744$ \\ \hline
-		$6$ & $1.6574815$ & $0.0000000$ & $1.2891160$ \\ \hline
-	\end{tabular}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\caption{Punto inicial: 1.20}
-	\begin{tabular}{|c|c|c|c|} \hline
-		$i$ & $x_{i}$ & $f(x_{i})$ & $f'(x_{i})$ \\ \hline
-		$0$ & $1.2000000$ & $-0.4743881$ & $0.5872960$ \\ \hline
-		$1$ & $2.0077496$ & $0.4246754$ & $1.0415920$ \\ \hline
-		$2$ & $1.6000320$ & $-0.0735670$ & $1.2686661$ \\ \hline
-		$3$ & $1.6580197$ & $0.0006939$ & $1.2892140$ \\ \hline
-		$4$ & $1.6574815$ & $0.0000000$ & $1.2891160$ \\ \hline
-		$5$ & $1.6574815$ & $-0.0000000$ & $1.2891160$ \\ \hline
-	\end{tabular}
+	\includegraphics[scale=0.18]{img/1_4dif.png}
 \end{figure}
 
+Para $n = 7$ se obtiene el siguiente polinomio:
+\begin{dmath}
+P_1(x) = 0.03846154 +0.01198357 * (x +10.00000000 ) +0.00440345 * (x +10.00000000 ) * (x +7.14285714 ) +0.00218166 * (x +10.00000000 ) * (x +7.14285714 ) * (x +4.28571429 ) -0.00072895 * (x +10.00000000 ) * (x +7.14285714 ) * (x +4.28571429 ) * (x +1.42857143 ) +0.00008869 * (x +10.00000000 ) * (x +7.14285714 ) * (x +4.28571429 ) * (x +1.42857143 ) * (x -1.42857143 ) -0.00000517 * (x +10.00000000 ) * (x +7.14285714 ) * (x +4.28571429 ) * (x +1.42857143 ) * (x -1.42857143 ) * (x -4.28571429 ) +0.00000000 * (x +10.00000000 ) * (x +7.14285714 ) * (x +4.28571429 ) * (x +1.42857143 ) * (x -1.42857143 ) * (x -4.28571429 ) * (x -7.14285714 )
+\end{dmath}
+La grafica de $P_1(x)$:
 \begin{figure}[H]
-\centering
-\label{grafica:1}
-\begin{tikzpicture}
-	\begin{axis}[ 
-	title={$f(t) = 1 - \dfrac{3}{2} * e^{(-1 * (t*t - 2*t + 0.9775))} - e^{(-1 * (t*t - 8*t + 15.96))}$},
-	xlabel=$t$,
-	ylabel=$f(t)$,
-	%ylabel={$f(t) = 1 - \dfrac{3}{2} * e^(t*t - 2*t + 0.9775) - e^(-1 * (t*t - 8*t + 15.96))$}
-	xmin=-2, xmax=5,
-	ymin=-1, ymax=1.5,
-	minor x tick num=1,
-	axis lines=center,
-	axis on top=true,
-	] 
-	%  \addplot {x^2 - x +4}; 
-	\addplot [samples=300]{1 - (1.5) * e^(-1*(x*x - 2*x + 0.9775)) - e^(-1 * (x*x - 8*x + 15.96))}; 
-	% \addplot [blue, mark = *, nodes near coords=0.80,every node near coord/.style={anchor=180}] coordinates {(0.80, 0)};
-	%\node[blue, ,circle,fill,inner sep=1.5pt] at (axis cs:0.80,0) {};
-	\end{axis}
-\end{tikzpicture}
-% \caption{$f(t) = 1 - \dfrac{3}{2} * e^{(-1 * (t*t - 2*t + 0.9775))} - e^{(-1 * (t*t - 8*t + 15.96))}$}
+	\centering
+	\includegraphics[scale=0.18]{img/1_7.png}
+\end{figure}
+Y la grafica de $f(x) - P_1(x)$:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.18]{img/1_7dif.png}
 \end{figure}
 
-Entonces tenemos que todos los valores convergen excepto $t_{0}=0.95$, y $t_{0}=1$. Como podemos ver en \ref{grafica:1}, 
-se pierde en estos valores por la pendiente de la curva ya que están
-cerca de un punto critico, entonces al trazar
-las rectas tangentes el método se aleja mucho.
-Los cambios en $t_{0}$, a pesar de ser pequeños, la pendiente en estos puntos cambia bastante y por lo tanto también la velocidad
-de convergencia.
+Para $n = 10$ se obtiene el siguiente polinomio:
+\begin{dmath}
+P_2(x) = 0.03846154 +0.01018100 * (x +10.00000000 ) +0.00260181 * (x +10.00000000 ) * (x +8.00000000 ) +0.00079186 * (x +10.00000000 ) * (x +8.00000000 ) * (x +6.00000000 ) +0.00026867 * (x +10.00000000 ) * (x +8.00000000 ) * (x +6.00000000 ) * (x +4.00000000 ) -0.00006363 * (x +10.00000000 ) * (x +8.00000000 ) * (x +6.00000000 ) * (x +4.00000000 ) * (x +2.00000000 ) -0.00001768 * (x +10.00000000 ) * (x +8.00000000 ) * (x +6.00000000 ) * (x +4.00000000 ) * (x +2.00000000 ) * (x -0.00000000 ) +0.00000848 * (x +10.00000000 ) * (x +8.00000000 ) * (x +6.00000000 ) * (x +4.00000000 ) * (x +2.00000000 ) * (x -0.00000000 ) * (x -2.00000000 ) -0.00000168 * (x +10.00000000 ) * (x +8.00000000 ) * (x +6.00000000 ) * (x +4.00000000 ) * (x +2.00000000 ) * (x -0.00000000 ) * (x -2.00000000 ) * (x -4.00000000 ) +0.00000022 * (x +10.00000000 ) * (x +8.00000000 ) * (x +6.00000000 ) * (x +4.00000000 ) * (x +2.00000000 ) * (x -0.00000000 ) * (x -2.00000000 ) * (x -4.00000000 ) * (x -6.00000000 ) -0.00000002 * (x +10.00000000 ) * (x +8.00000000 ) * (x +6.00000000 ) * (x +4.00000000 ) * (x +2.00000000 ) * (x -0.00000000 ) * (x -2.00000000 ) * (x -4.00000000 ) * (x -6.00000000 ) * (x -8.00000000 )
+\end{dmath}
+La grafica de $P_2(x)$:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.18]{img/1_10.png}
+\end{figure}
+Y la grafica de $f(x) - P_2(x)$:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.18]{img/1_10dif.png}
+\end{figure}
+
+Para ver cualquiera de estas gráficas con mas detalle, acceder al siguiente enlace \url{https://www.desmos.com/calculator/sqria4dpmp}
