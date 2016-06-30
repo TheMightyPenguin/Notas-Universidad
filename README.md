@@ -9,6 +9,8 @@
 - Investigar reubicaciòn dinamica y reubicaciòn estatica. :computer: :pizza:
 - Investigar que hace la MMU
 
+## Proyecto BD
+Somos el grupo choco4
 
 #### Detalles
 conexion: `psql -h laboratorios -U bd32 -d postgres`
