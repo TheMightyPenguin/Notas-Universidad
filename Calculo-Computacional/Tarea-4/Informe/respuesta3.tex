@@ -1,0 +1,29 @@
+% respuesta3.tex
+
+En el caso del algoritmo de diferencias divididas de newton, tenemos que armar la matriz tridiagonal, y si nos damos cuenta con el algoritmo en cada iteración se recorre una fila menos que en la anterior, entonces la formula utilizada para calcular cada espacio de la matriz, se calcula  
+$\sum\nolimits_{i=1}^n n-i$ veces. 
+ En el caso de diferencias divididas en cada iteración se calculan 2 restas y una división. Y en cada iteración se hacen 3 operaciones (2 restas y una división). Entonces tenemos que podemos calcular el numero de operaciones usando:
+\begin{equation*}
+	3 \times \sum\limits_{i=1}^n n-i = 3\times \frac{n^2 - n}{2}
+\end{equation*}
+
+En el caso de los splines, tenemos lo siguiente, siguiendo el algoritmo planteado en la pagina 150 del libro de Burden \& Faires:
+\begin{equation*}
+	\sum\limits_{i=0}^{n-1} 1 + \sum\limits_{i=1}^{n-1} 7 + 1\sum\limits_{i=1}^{n-1} 8 + \sum\limits_{i=0}^{n-1} 12
+	=
+	28n - 15
+\end{equation*}
+
+Evaluando con las formulas obtenidas, obtenemos lo siguiente:
+\begin{center}
+	\captionof{figure}{Punto inicial: 0.50}
+	\begin{longtable}{|c||c|c|} \hline
+		$n$   & Diferencias divididas & Spline \\ \hline \hline
+		10    & 165     & 265   \\ \hline
+		50    & 3825    & 1385  \\ \hline
+		200   & 60300   & 5585  \\ \hline
+		1000  & 1501500 & 27985 \\ \hline
+		
+		
+	\end{longtable}
+\end{center}
