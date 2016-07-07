@@ -1,0 +1,95 @@
+\documentclass{beamer}
+
+%--% Paquetes %----------------------------------%
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage[document]{ragged2e}
+\usepackage{multicol}
+\usepackage{pgfgantt}
+\usepackage{minted}
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath}
+\usepackage{wrapfig,lipsum,booktabs}
+%------------------------------------------------%
+
+%En caso de que LaTeX separe las palabras con - de manera incorrecta, usar
+%\hyphenation{deci-sión,e-xa-men, otras palabras....}
+\hyphenation{o-cu-rrir}
+
+
+\usetikzlibrary{positioning,fit,calc}
+
+\makeatletter
+\newcommand*{\MoveFitHeight}[1]{%
+	\pgfmathsetlengthmacro\fit@inner@sep{%
+		\pgfkeysvalueof{/pgf/inner xsep}%
+	}%
+	\pgfmathsetlengthmacro\fit@text@height{%
+		\tikz@text@height
+	}%
+	\kern-\fit@inner@sep\relax
+	\raisebox{\fit@text@height}[0pt][0pt]{#1}%
+}
+\makeatother
+
+\newcommand{\algTitle}{\textbf{Algoritmo:} }
+
+\newcommand{\bigO}[1]{$O({#1})$}
+
+\usetheme{Berlin}
+%\usecolortheme{beaver}
+
+%--% Personal Info %-----------------------------%
+\title{Almacenamiento Intermedio de E/S}
+\author{Victor Tortolero, 24.569.609}
+\institute{
+	Sistemas Operativos, FACYT
+}
+\date{\today}
+%------------------------------------------------%
+
+\begin{document}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Almacenamiento Intermedio de E/S}
+	
+	Espacio de memoria principal que se reserva para el almacenamiento intermedio de datos procedentes o con destino a los periféricos.
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Almacenamiento Intermedio de E/S}
+	\begin{itemize}
+		\item \textbf{E/S sin buffer}: La transferencia se realiza directamente sobre el buffer de usuario.
+		\item \textbf{Buffer simple}: La transferencia de un bloque de la entrada se hace desde el dispositivo al
+		buffer que el s.o. le reserva en la memoria principal.
+	\end{itemize}
+\end{frame}
+	
+\begin{frame}
+	\frametitle{Almacenamiento Intermedio de E/S}
+	\begin{itemize}
+		\item \textbf{Buffer doble}: Un proceso transfiere datos a (o desde) uno de los buffers mientras el s.o. vacía (o llena) el otro buffer.
+		\item \textbf{Buffer circular}: Permite soportar concurrencia del tipo productor-consumidor.
+	\end{itemize}
+\end{frame}
+
+\end{document}
+

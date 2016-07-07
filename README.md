@@ -15,7 +15,7 @@ conexion: `psql -h laboratorios -U bd32 -d postgres`
 
 Usuario base de datos:  | bd32
 ----------------------- | --------------------
-Contraseña:             | 
+Contraseña:             |
 
 - Comandos:
   - `\dn` Muestra los esquemas
