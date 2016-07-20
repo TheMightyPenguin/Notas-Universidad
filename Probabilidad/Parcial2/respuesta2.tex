@@ -1,0 +1,32 @@
+% Pregunta 2
+
+\section*{Pregunta 2}
+
+En la producción de cierta clase cuerda, el numero de defectos por pie $Y$ se supone que tiene una distribución de Poisson con media $\lambda = 2$. La utilidad por pie se cuando se venda la cuerda esta dada por $X$, donde $X = 50 - 2Y - Y^2$. Encuentre la utilidad esperada por pie.
+
+\vspace{0.3cm}
+\textbf{R}: Tenemos que para una distribución de Poisson, la varianza viene dada por $\lambda$, al igual que la esperanza. Por lo tanto, tendríamos:
+\begin{align*}
+	& \operatorname{E}(Y) = 2 \\
+	& \operatorname{Var}(Y) = 2
+\end{align*}
+Y luego:
+\begin{align*}
+	& \operatorname{E}(X) = \operatorname{E}(50 - 2Y - Y^2) \\
+	& \operatorname{E}(X) = 50 - 2\operatorname{E}(Y) - \operatorname{E}(Y^2) \\
+	& \operatorname{Var}(Y) = \operatorname{E}(Y^2) - (\operatorname{E}(Y))^2
+\end{align*}
+Si despejamos $\operatorname{E}(Y^2)$, y luego sustituimos, tenemos:
+\begin{align*}
+	& \operatorname{E}(Y^2) = (\operatorname{E}(Y))^2 + \operatorname{Var}(Y) \\
+	& \operatorname{E}(Y^2) = 2^2 + 2 \\
+	& \operatorname{E}(Y^2) = 4 + 2 \\
+	& \operatorname{E}(Y^2) = 6
+\end{align*}
+Y con este resultado, podemos calcular $\operatorname{E}(X)$, entonces:
+\begin{align*}
+	& \operatorname{E}(X) = 50 - 2(2) - 6 \\
+	& \operatorname{E}(X) = 50 - 4 - 6 \\
+	& \operatorname{E}(X) = 40
+\end{align*}
+$\therefore$ Por lo tanto, la utilidad esperada por pie, es $40$.

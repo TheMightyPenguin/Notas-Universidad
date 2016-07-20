@@ -1,0 +1,20 @@
+Consulta 1:
+Listar las distintas elevaciones en las que se encuentran las estaciones meteorologicas 
+(sin repetir valores de elevacion) indicando las ciudades donde se encuentran.
+
+
+Consulta 2:
+Obtener la temperatura minima obtenida en la ciudad cuya altitud sea la mayor.
+
+Consulta 3:
+Liste el pronostico de temperatura para Valencia ordenado descendentemente por fecha. 
+
+
+Consulta 4:
+Obtener la información completa de las estaciones meteorologicas y sus pronosticos para 2016 (use LEFT JOIN).
+
+
+Consulta 5:
+Añadir a todos los estaciones meteorologicoas un pronostico de direccion del viento 'S' (Sur) para el dia 2016-06-10
+con una nubosidad de 8, presion 1000.0, temperatura 0.00 y velocidad del viento 20. No modifique el script de creacion, 
+use solo una instruccion de insert into.

@@ -1,0 +1,135 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{courier}
+\usepackage{capt-of}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{standalone}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage{pgfplots}
+\usepackage[document]{ragged2e}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{breqn}
+\usepackage{tkz-fct}  
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+ % % % % % % % %
+
+\usemintedstyle{pastie}
+
+\decimalpoint
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%Custom commands
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily 24 Ceros}}}{00\dots00}}}
+
+\usepackage{anysize}
+\marginsize{1.0cm}{1.0cm}{1.8cm}{1.8cm}
+
+\usepackage{setspace}
+\onehalfspacing
+%\doublespacing
+
+\setlength{\columnsep}{1cm}
+
+%En caso de que LaTeX separe las palabras con - de manera incorrecta, usar
+%\hyphenation{deci-sión,e-xa-men, otras palabras....}
+
+\setlength{\columnseprule}{2pt}
+\def\columnseprulecolor{\color{black}}
+
+\newcommand{\converge}{(Converge)}
+\newcommand{\diverge}{(Diverge)}
+\newcommand{\function}[2]{
+	#1 \left( #2 \right)
+}
+
+\newcommand{\arrows}[4]{
+	\begin{matrix}
+		\ifx\relax#1\relax\else \xrightarrow{#1}\fi\\
+		\ifx\relax#2\relax\else \xrightarrow{#2}\fi\\
+		\ifx\relax#3\relax\else \xrightarrow{#3}\fi\\
+		\ifx\relax#4\relax\else \xrightarrow{#4}\fi
+	\end{matrix}
+}
+
+\newcommand{\customM}[4]{
+\left[
+	\begin{array}{cccc|c}
+		#1 \\
+		#2 \\ 
+		#3 \\
+		#4
+	\end{array}
+\right]
+}
+
+\newcommand{\doRow}[5]{
+	#1 & #2 & #3 & #4 & #5
+}
+
+\newcommand{\opEtres}[3]{
+	{F_{#1} \leftarrow F_{#1} - ({#3} \times F_{#2})}
+}
+
+\begin{document}
+
+\flushleft
+\setlength{\parindent}{20pt}
+
+\justify
+%%CUERPO PRINCIPAl%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centerline{\huge Parcial 4 \textbf{Calculo Computacional}}
+\centerline{Victor Tortolero CI:24.569.609}  % Pon tu nombre y Cedula!
+\vspace{0.1cm}
+\hrule
+
+%--% Respuesta 1 %--------------------------------------------------%
+\section*{Respuesta 1}
+\input{respuesta1}
+\newpage
+%-------------------------------------------------------------------%
+
+%--% Respuesta 2 %--------------------------------------------------%
+\section*{Respuesta 2}
+\input{respuesta2}
+\newpage
+%-------------------------------------------------------------------%
+
+%--% Respuesta 3 %--------------------------------------------------%
+\section*{Respuesta 3}
+\input{respuesta3}
+\newpage
+%-------------------------------------------------------------------%
+
+%--% Respuesta 4 %--------------------------------------------------%
+\section*{Respuesta 4}
+\input{respuesta4}
+\newpage
+%-------------------------------------------------------------------%
+
+%--% Respuesta 5 %--------------------------------------------------%
+\section*{Respuesta 5}
+\input{respuesta5}
+\newpage
+%-------------------------------------------------------------------%
+
+\end{document}

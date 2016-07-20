@@ -1,0 +1,108 @@
+% Pregunta 1
+
+\section*{Pregunta 1}
+
+Considérese $Y$ tiene una distribución hipergeométrica
+\begin{align*}
+	& \prob{y} = \frac{\binom{r}{y} \binom{N-r}{n-y}}{\binom{N}{n}}
+\end{align*}
+\begin{enumerate}[label=\alph*)]
+	\item{
+		Demuestre que
+		\begin{align*}
+		& \prob{Y = n} = \left( \frac{r}{N} \right) \left( \frac{r-1}{N-1} \right) \left( \frac{r-2}{N-2} \right) \ldots \left( \frac{r-n+1}{N-n+1} \right)
+		\end{align*}		
+	}
+	
+	\item{
+		Aplique la expansión binomial a cada factor de la siguiente ecuación:
+		\begin{align*}
+		\left( 1 + a \right)^{N_1} \left( 1 + a \right)^{N_2} = \left( 1 + a \right)^{N_1 + N_2}
+		\end{align*}
+		Ahora compare los coeficientes $a^n$ en ambos lados para demostrar que
+		\begin{align*}
+		\binom{N_1}{0}\binom{N_2}{n} + \binom{N_1}{1} \binom{N_2}{n-1} + \ldots + \binom{N_1}{n} \binom{N_2}{0} = \binom{N_1 + N_2}{n}
+		\end{align*}
+	}
+	
+	\item{
+		Usando el resultado del inciso 1b, concluya que
+		\begin{align*}
+			\sum_{y=0}^{n} \prob{y} = 1
+		\end{align*}
+	}
+\end{enumerate}
+
+\newpage
+\textbf{R}: 
+
+a) Se sabe que $r \geq y$ y que $N-r \geq n-y$, y al reemplazar $y$ por $n$, tenemos que $r \geq n$ y que $N - r \geq 0$, y esto nos indica que $N \geq r$ y por lo tanto $N \geq n$, y al desarrollar, tenemos:
+\begin{align*}
+	\prob{n} & = \frac{\binom{r}{n} \binom{N-r}{n-n}}{\binom{N}{n}} 
+	           = \frac{\binom{r}{n} \binom{N-r}{0}}{\binom{N}{n}} 
+	           = \frac{\binom{r}{n} (1)}{\binom{N}{n}} 
+	           = \frac{\binom{r}{n}}{\binom{N}{n}} 
+	           = \frac{\frac{r!}{n! (r-n)!}}{\frac{N!}{n! (N-n)!}} \\
+			 & = \frac{r! n! (N-n)!}{N! n! (r-n)!} 
+			   = \frac{r! (N-n)!}{N! (r-n)!} 
+			   = \frac{r (r-1) (r-2) \ldots (r-n+1) (r-n)! (N-n)!}{N! (r-n)!} \\
+			 & = \frac{r (r-1) (r-2) \ldots (r-n+1) (N-n)!}{N!}
+			   = \frac{r (r-1) (r-2) \ldots (r-n+1) (N-n)!}{N (N-1) (N-2) \ldots (N-n+1) (N-n)!} \\
+			 & = \frac{r (r-1) (r-2) \ldots (r-n+1)}{N (N-1) (N-2) \ldots (N-n+1)}
+			   = \left( \frac{r}{N} \right) \left( \frac{r-1}{N-1} \right) \left( \frac{r-2}{N-2} \right) \ldots \left( \frac{r-n+1}{N-n+1} \right)
+\end{align*}
+$\therefore$ Llegamos a lo que se pedía, por lo tanto queda demostrado que:
+\begin{align*}
+& \prob{Y = n} = \left( \frac{r}{N} \right) \left( \frac{r-1}{N-1} \right) \left( \frac{r-2}{N-2} \right) \ldots \left( \frac{r-n+1}{N-n+1} \right)
+\end{align*}
+
+
+\newpage
+b) El teorema del binomio, dice que:
+\begin{align*}
+	(x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k 
+\end{align*}
+Y con este teorema, tenemos lo siguiente:
+\begin{align*}
+	&\left( 1+a \right)^n = \sum_{k=0}^{n} \binom{n}{k} \left( 1^{n-k} \right) a^k
+	                      = \sum_{k=0}^{n} \binom{n}{k} a^k
+\end{align*}
+Y con esto, al desarrollar cada factor de la ecuación dada en el enunciado, primero desarrollando $(a+1)^{N_1} (a+1)^{N_2}$, tendríamos:
+\begin{align*}
+	(a+1)^{N_1} (a+1)^{N_2} 
+	& = \left[ \sum_{k=0}^{N_1} \binom{N_1}{k} a^k \right] \times \left[ \sum_{k=0}^{N_2} \binom{N_2}{k} a^k \right] \\
+	& = \left[ \binom{N_1}{0} + \binom{N_1}{1} a + \ldots + \binom{N_1}{N_1} a^{N_1} \right]
+	    \times \left[ \binom{N_2}{0} + \binom{N_2}{1} a + \ldots + \binom{N_2}{N_2} a^{N_2} \right] \\
+\end{align*}
+Ahora al desarrollar $(a+1)^{N_1 + N_2}$, tendríamos:
+\begin{align*}
+	(a+1)^{N_1 + N_2} = \sum_{k=0}^{N_1 + N_2} \binom{N_1 + N_2}{k} a^k
+	              = \binom{N_1 + N_2}{0} + \binom{N_1 + N_2}{1} a + \ldots + \binom{N_1 + N_2}{N_1 + N_2} a^{N_1 + N_2}
+\end{align*}
+Entonces tenemos lo siguiente al igualar ambos lados:
+\begin{dmath}
+	\left[ \binom{N_1}{0} + \binom{N_1}{1} a + \ldots + \binom{N_1}{N_1} a^{N_1} \right]
+	\times \left[ \binom{N_2}{0} + \binom{N_2}{1} a + \ldots + \binom{N_2}{N_2} a^{N_2} \right]
+	= \binom{N_1 + N_2}{0} + \binom{N_1 + N_2}{1} a + \ldots + \binom{N_1 + N_2}{N_1 + N_2} a^{N_1 + N_2}
+\end{dmath}
+Como la igualdad se cumple, tenemos que el coeficiente de cada $a^n$ debe ser igual. Tenemos que el coeficiente del lado izquierdo de la ultima ecuación para $a^n$, viene dado por la siguiente sumatoria:
+\begin{align*}
+	\binom{N_1}{0} \binom{N_2}{n} + \binom{N_1}{1} \binom{N_2}{n - 1} + \ldots
+	+ \binom{N_1}{n} \binom{N_2}{0} = \sum_{k=0}^{n} \binom{N_1}{k} \binom{N_2}{n-k} 
+\end{align*}
+Y el coeficiente del lado derecho para $a^n$ vendría dado por:
+\begin{align*}
+	\binom{N_1 + N_2}{n}
+\end{align*}
+$\therefore$ Entonces como la igualdad se cumple, el coeficiente $a^n$ de un lado de la ecuación (1) debería ser igual al del otro lado y por lo tanto tenemos que:
+\begin{align*}
+\binom{N_1}{0} \binom{N_2}{n} + \binom{N_1}{1} \binom{N_2}{n - 1} + \ldots
++ \binom{N_1}{n} \binom{N_2}{0} = \binom{N_1 + N_2}{n}
+\end{align*}
+
+
+\newpage
+c) Se quiere demostrar que  $\sum_{y=0}^{n} \prob{y} = 1$, entonces tenemos que:
+\begin{align*}
+	\sum_{y=0}^{n} \prob{y} = \sum_{y=0}^{n} \left( \prod_{k=0}^{y+1} \frac{r-k}{N-k} \right)
+\end{align*}

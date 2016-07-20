@@ -1,0 +1,31 @@
+% Pregunta 3
+
+\section*{Pregunta 3}
+
+Suponga un lote de 5000 fusibles eléctricos contiene 5\% de piezas defectuosas. Si se prueba una muestra de 5 fusibles, encuentre la probabilidad de hallar al menos uno defectuoso.
+
+\vspace{0.3cm}
+\textbf{R}: Tenemos que es una distribución binomial, en donde la probabilidad de éxito es $p = 0.05$, y la probabilidad del fracaso seria $q = 0.95$ y tenemos que $n = 5$ que es nuestra muestra. Y queremos saber la probabilidad de hallar al menos uno defectuoso, entonces tenemos que queremos encontrar $\prob{X \geq 1}$. Entonces tenemos:
+\begin{align*}
+	& \prob{1} + \prob{2} + \prob{3} + \prob{4} + \prob{5} = \prob{X \geq 1} \\
+	& \prob{0} + \prob{1} + \prob{2} + \prob{3} + \prob{4} + \prob{5} = 1 \\
+	& \prob{0} + \prob{X \geq 1} = 1 \\
+	& \prob{X \geq 1} = 1 - \prob{0}
+\end{align*}
+De modo que para calcular $\prob{X \geq 1}$ solo hace falta calcular $\prob{0}$. Para calcular esto, entonces para calcular $\prob{0}$, podemos usar:
+\begin{align*}
+& \prob{x; n, p} = \binom{n}{x} p^x (1 - p)^{n-x}
+\end{align*}
+Tenemos $n$ y $p$, por lo tanto:
+\begin{align*}
+	& \prob{0} = \binom{5}{0} \left( 0.05^0 \right) (1 - 0.05)^{5-0} \\
+	& \prob{0} = (1) (1) (0.95)^5 \\
+	& \prob{0} = (1) (1) (0.95)^5 \\
+	& \prob{0} = 0.95^5
+\end{align*}
+Con esto ya podemos calcular $\prob{X \geq 1}$, entonces:
+\begin{align*}
+	& \prob{X \geq 1} = 1 - 0.95^5 \\
+	& \prob{X \geq 1} = 0.2262190625
+\end{align*}
+$\therefore$ Entonces la probabilidad de que haya al menos uno defectuoso es de 0.2262190625
