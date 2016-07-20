@@ -21,6 +21,6 @@ def pprint_matrix(m):
 		print
 
 if __name__ == '__main__':
-    a, b = build_linear_system(20, 24569609)
+    a, b = build_linear_system(5, 24569609)
     pprint_matrix(a)
     print b
