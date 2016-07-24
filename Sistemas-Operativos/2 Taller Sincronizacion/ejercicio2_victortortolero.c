@@ -86,7 +86,7 @@ void *jugador(void *id){
 void *arquero(void *id){
 	while(1){
 		sem_post(&en_posicion);
-        printf("Arquero: Estoy listo!\n");
+		printf("Arquero: Estoy listo!\n");
 		sem_wait(&puede_atajar);
 		printf("Arquero: Intento atajar la pelota\n");
 		printf("%s\n", ((rand() % 2) > 0.5 ? "Gooooooooool!!!!" : "El arquero atajo la pelota :("));
